@@ -2,7 +2,7 @@
 
 A client-side web tool for estimating monthly health plan premiums for University of California retirees for the 2026 plan year. Enter your eligibility details and instantly see net premiums across all UC medical and dental plans.
 
-**Live site:** https://jdhori.github.io/uc-retiree-premium-estimator/
+**Live site:** https://guerren72.github.io/uc-retiree-premium-estimator-2026/
 
 > **Disclaimer:** For planning purposes only. Not a guaranteed rate. Does not include premiums for retirees 65+ without Medicare, union-negotiated rates, disability rates, Via Benefits, postdocs, interns/residents, or students. See [UCnet](https://ucnet.universityofcalifornia.edu) for official rates.
 
