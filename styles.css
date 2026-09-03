@@ -59,7 +59,7 @@ header::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'EB Garamond', serif;
+  font-family: 'Arial', serif;
   font-size: 20px;
   font-weight: 600;
   color: var(--navy);
@@ -67,7 +67,7 @@ header::after {
 }
 
 header h1 {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Arial', serif;
   font-size: 24px;
   font-weight: 500;
   color: white;
@@ -149,7 +149,7 @@ header h1 span {
 }
 
 .card-header h2 {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Arial', serif;
   font-size: 17px;
   font-weight: 500;
 }
@@ -258,7 +258,7 @@ input[type="number"]:disabled {
 }
 
 .contrib-value {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Arial', serif;
   font-size: 28px;
   font-weight: 600;
   color: var(--gold);
@@ -598,7 +598,7 @@ tr:not(.na-row) .cov-info-btn {
 }
 
 .comp-meta h2 {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Arial', serif;
   font-size: 20px;
   font-weight: 500;
   color: var(--navy);
@@ -636,7 +636,7 @@ tr:not(.na-row) .cov-info-btn {
   background: var(--navy);
   color: white;
   padding: 11px 10px;
-  font-family: 'EB Garamond', serif;
+  font-family: 'Arial', serif;
   font-size: 13px;
   font-weight: 500;
   text-align: center;
@@ -739,7 +739,7 @@ tr:not(.na-row) .cov-info-btn {
 }
 
 .g3-intro h3 {
-  font-family: 'EB Garamond', serif;
+  font-family: 'Arial', serif;
   font-size: 18px;
   font-weight: 500;
   color: var(--navy);
