@@ -660,7 +660,7 @@ tr:not(.na-row) .cov-info-btn {
   letter-spacing: 0.04em;
   padding: 7px 8px;
   text-align: center;
-  border-right: 1px solid var(--border);
+  border-right: 2px solid var(--border);
   border-bottom: 2px solid var(--border);
   white-space: nowrap;
 }
@@ -688,7 +688,7 @@ tr:not(.na-row) .cov-info-btn {
   padding: 8px 9px;
   text-align: center;
   font-variant-numeric: tabular-nums;
-  border-right: 1px solid var(--warm-gray);
+  border-right: 2px solid var(--warm-gray);
   font-size: 12px;
 }
 
