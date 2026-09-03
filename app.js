@@ -483,10 +483,13 @@ function renderEstimator() {
     const r   = calcRow(plan, lv, ucPct);
     const row = document.createElement('tr');
 
-    // Coverage level header cell (th, scope=row)
-    const firstTh = el('th', { cls: 'cov-head', attrs: { scope: 'row' } });
-    firstTh.appendChild(makeCovCell(lv));
-    row.appendChild(firstTh);
+// Coverage level header cell (th, scope=row) — text only (no info icon)
+const firstTh = el('th', { cls: 'cov-head', attrs: { scope: 'row' } });
+firstTh.appendChild(el('span', {
+  text: lv,
+  attrs: { style: 'font-weight:600;color:var(--navy)' }
+}));
+row.appendChild(firstTh);
 
     if (!r) {
       row.classList.add('na-row');
