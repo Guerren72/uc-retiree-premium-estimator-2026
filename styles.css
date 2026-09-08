@@ -640,7 +640,7 @@ tr:not(.na-row) .cov-info-btn {
   font-size: 13px;
   font-weight: 500;
   text-align: center;
-  border-right: 2px solid var (255, 255, 255, 0.15);
+  border-right: 2px solid rgba(255, 255, 255, 0.3);
   line-height: 1.3;
   vertical-align: bottom;
 }
@@ -648,7 +648,7 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl thead tr:first-child th:first-child {
   text-align: left;
   min-width: 72px;
-  border-right: 2px solid rgba(255, 255, 255, 0.3);
+  border-right: 2px solid var (255, 255, 255, 0.15);
 }
 
 .comp-tbl thead tr:nth-child(2) th {
