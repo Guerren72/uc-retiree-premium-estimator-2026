@@ -130,12 +130,12 @@ const COV_DESCS = {
   UA:  "Retiree + Adult",
   UAC: "Retiree + Adult + Child(ren)",
   M:   "Medicare-eligible Retiree",
-  MM:  "M-eligible Retiree + M-eligible Adult or Child",
-  MC:  "M-eligible Retiree + Child(ren), or Retiree + M-eligible Child",
-  MA:  "M-eligible Retiree + Adult, or Retiree + M-eligible Adult",
-  MAC: "M-eligible Retiree + Adult + Child(ren) OR Retiree + M-eligible Adult + Child(ren) OR Retiree + Adult + M-eligible Child",
-  MMM: "M-eligible Retiree + M-eligible Adult + M-eligible Child",
-  MMC: "MMC = Medicare-eligible Retiree + Medicare-eligible Adult + Child(ren) OR M-eligible Retiree + Adult + M-eligible Child",
+  MM:  "Medicare-eligible Retiree + Medicare-eligible Adult or Child",
+  MC:  "Medicare-eligible Retiree + Child(ren), or Retiree + Medicare-eligible Child",
+  MA:  "Medicare-eligible Retiree + Adult, or Retiree + Medicare-eligible Adult",
+  MAC: "Medicare-eligible Retiree + Adult + Child(ren) OR Retiree + Medicare-eligible Adult + Child(ren) OR Retiree + Adult + Medicare-eligible Child",
+  MMM: "Medicare-eligible Retiree + Medicare-eligible Adult + Medicare-eligible Child",
+  MMC: "MMC = Medicare-eligible Retiree + Medicare-eligible Adult + Child(ren) OR Medicare-eligible Retiree + Adult + Medicare-eligible Child",
 };
 
 // Medicare Part B reimbursement: number of covered persons per level
