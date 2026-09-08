@@ -874,3 +874,21 @@ tr:not(.na-row) .cov-info-btn {
   #tab-comparison .tab-inner,
   #tab-g3 .tab-inner { padding: 20px 16px 48px; }
 }
+
+/* ── Guerren Visual Grouping for Medical Plan Columns ── */
+
+/* 1. Add a dark right border to the header columns that span over both sub-columns */
+.comp-tbl thead tr:first-child th:not(:first-child):not(:last-child) {
+  border-right: 2px solid var(--text-muted);
+}
+
+/* 2. Add a dark right border to every second sub-header cell (the "Part B Reimb." headers) */
+.comp-tbl thead tr:last-child th:nth-child(even) {
+  border-right: 2px solid var(--text-muted);
+}
+
+/* 3. Add a dark right border to every second data column cell in the body rows */
+.comp-tbl tbody td:nth-child(even) {
+  border-right: 2px solid var(--text-muted);
+}
+
