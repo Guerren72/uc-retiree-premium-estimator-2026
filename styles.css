@@ -631,6 +631,11 @@ tr:not(.na-row) .cov-info-btn {
   font-size: 12px;
   background: white;
 }
+/* Guerren Target the right border of the Part B Reimb. column */
+table tr th:nth-child(4),
+table tr td:nth-child(4) {
+  border-right: 2px solid var(--text-muted); /* Adjust thickness or color as preferred */
+}
 
 .comp-tbl thead tr:first-child th {
   background: var(--navy);
