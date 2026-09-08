@@ -206,7 +206,7 @@ input[type="number"] {
 }
 
 select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-lineca[...]
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 32px;
@@ -708,6 +708,13 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl td.net.zero { color: var(--navy); }
 .comp-tbl td.pbv { color: var(--green); font-weight: 600; font-size: 11px; }
 .comp-tbl td.nav { color: var(--mid-gray); font-size: 11px; }
+
+/* Darker separator between Part B Reimb. and Net Premium */
+.comp-tbl td.grp-sep,
+.comp-tbl tbody th.grp-sep,
+.comp-tbl thead th.grp-sep {
+  border-right-color: var(--navy);
+}
 
 .plan-badge {
   display: inline-block;
