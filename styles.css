@@ -55,7 +55,7 @@ header::after {
   width: 50px;
   height: 50px;
   background: var(--gold);
-  -radius: 50%;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,7 +87,7 @@ header h1 span {
 /* ── Tab bar ──────────────────────────────────── */
 .tab-bar {
   background: var(--navy);
-  -bottom: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
 }
 
 .tab-bar-inner {
@@ -99,16 +99,16 @@ header h1 span {
 
 .tab-btn {
   background: none;
-  : none;
+  border: none;
   cursor: pointer;
   padding: 12px 22px 11px;
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.55);
-  -bottom: 3px solid transparent;
+  border-bottom: 3px solid transparent;
   margin-bottom: -3px;
-  transition: color 0.15s, -color 0.15s;
+  transition: color 0.15s, border-color 0.15s;
   white-space: nowrap;
 }
 
@@ -118,7 +118,7 @@ header h1 span {
 
 .tab-btn.active {
   color: var(--gold);
-  -bottom-color: var(--gold);
+  border-bottom-color: var(--gold);
 }
 
 /* ── Tab panels ───────────────────────────────── */
@@ -133,7 +133,7 @@ header h1 span {
 /* ── Card ─────────────────────────────────────── */
 .card {
   background: white;
-  : 1px solid var(--);
+  border: 1px solid var(--border);
   border-radius: 10px;
   box-shadow: var(--shadow);
 }
@@ -648,7 +648,7 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl thead tr:first-child th:first-child {
   text-align: left;
   min-width: 72px;
-  border-right: 2px solid var (255, 255, 255, 0.15);
+  border-right: 2px solid rgba(255, 255, 255, 0.15);
 }
 
 .comp-tbl thead tr:nth-child(2) th {
@@ -708,13 +708,6 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl td.net.zero { color: var(--navy); }
 .comp-tbl td.pbv { color: var(--green); font-weight: 600; font-size: 11px; }
 .comp-tbl td.nav { color: var(--mid-gray); font-size: 11px; }
-
-/* Darker separator between Part B Reimb. and Net Premium */
-.comp-tbl td.grp-sep,
-.comp-tbl tbody th.grp-sep,
-.comp-tbl thead th.grp-sep {
-  border-right-color: var(--navy);
-}
 
 .plan-badge {
   display: inline-block;
