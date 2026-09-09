@@ -906,9 +906,16 @@ tr:not(.na-row) .cov-info-btn {
   border-right: none; /* Keep the "Coverage Level" column clear */
 }
 
-/* Attempt to eliminate phantom right-hand column */
+/* Remove phantom right-most column in Medical Plan Comparison */
 .comp-tbl thead tr:first-child th:last-child,
-.comp-tbl thead tr:last-child th:last-child,
-.comp-tbl tbody tr > :last-child {
-  border-right: none;
+.comp-tbl thead tr:nth-child(2) th:last-child,
+.comp-tbl tbody tr > *:last-child {
+  border-right: none !important;
+}
+
+/* Make sure the final plan column does not get separator styling */
+.comp-tbl thead tr:first-child th:last-child,
+.comp-tbl thead tr:nth-child(2) th:last-child,
+.comp-tbl tbody tr > *:last-child {
+  background-image: none;
 }
