@@ -901,3 +901,8 @@ tr:not(.na-row) .cov-info-btn {
   border-right: none; /* Keep the "Coverage Level" column clear */
 }
 
+/* Guerren Darken the right border of the first column (Coverage Level) */
+.comp-tbl th:first-child,
+.comp-tbl td:first-child {
+  border-right: 2px solid var(--navy);
+}
