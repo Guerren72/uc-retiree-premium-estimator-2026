@@ -880,3 +880,30 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl td:first-child {
   border-right: 2px solid var(--navy);
 }
+
+/* ── Guerren Shifted Visual Grouping for Medical Plan Columns ── */
+
+/* 1. Shift the top-row plan header borders to the right */
+.comp-tbl thead tr:first-child th:not(:first-child) {
+  border-right: none; /* Clear previous rule if needed */
+}
+.comp-tbl thead tr:first-child th {
+  border-left: 2px solid var(--text-muted);
+}
+.comp-tbl thead tr:first-child th:first-child {
+  border-left: none; /* Keep the very first column clear */
+}
+
+/* 2. Target every odd (now even) sub-header cell (the "Net Premium" headers) */
+.comp-tbl thead tr:last-child th:nth-child(even) {
+  border-right: 2px solid var(--text-muted);
+}
+
+/* 3. Target every odd data column cell in the body rows */
+.comp-tbl tbody td:nth-child(odd) {
+  border-right: 2px solid var(--text-muted);
+}
+.comp-tbl tbody td:first-child {
+  border-right: none; /* Keep the "Coverage Level" column clear */
+}
+
