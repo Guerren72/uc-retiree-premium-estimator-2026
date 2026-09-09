@@ -888,8 +888,8 @@ tr:not(.na-row) .cov-info-btn {
   border-left: none; /* Keep the very first column clear */
 }
 
-/* 2. Target every odd sub-header cell (the "Net Premium" headers) */
-.comp-tbl thead tr:last-child th:nth-child(odd) {
+/* 2. Target every odd (now even) sub-header cell (the "Net Premium" headers) */
+.comp-tbl thead tr:last-child th:nth-child(even) {
   border-right: 2px solid var(--text-muted);
 }
 
