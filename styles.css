@@ -805,7 +805,7 @@ tr:not(.na-row) .cov-info-btn {
   font-weight: 600;
   text-align: center;
   white-space: nowrap;
-  border-right: 2px solid var(--text-muted);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .g3-tbl th.rh {
