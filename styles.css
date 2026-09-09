@@ -906,6 +906,7 @@ tr:not(.na-row) .cov-info-btn {
   border-right: none; /* Keep the "Coverage Level" column clear */
 }
 
+/* Attempt to eliminate phantom right-hand column */
 .comp-tbl thead tr:first-child th:last-child,
 .comp-tbl thead tr:last-child th:last-child,
 .comp-tbl tbody tr > :last-child {
