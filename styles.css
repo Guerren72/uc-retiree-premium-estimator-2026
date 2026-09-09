@@ -880,16 +880,3 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl td:first-child {
   border-right: 2px solid var(--navy);
 }
-/* Medical Plan Comparison: remove phantom right-most column */
-.comp-tbl thead tr:first-child th:last-child,
-.comp-tbl thead tr:nth-child(2) th:last-child,
-.comp-tbl tbody tr > *:last-child {
-  border-right: none !important;
-}
-
-/* Prevent the last column from being treated as a separator */
-.comp-tbl thead tr:first-child th:last-child,
-.comp-tbl thead tr:nth-child(2) th:last-child,
-.comp-tbl tbody tr > *:last-child {
-  background-image: none;
-}
