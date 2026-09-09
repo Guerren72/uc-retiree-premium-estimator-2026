@@ -372,7 +372,7 @@ tbody th {
 
 /* Row-header cells (<th scope="row">) and first column cells left-align. */
 tbody th[scope="row"] {
-  font-weight: 400;
+  font-weight: 600;
   text-align: left;
 }
 
