@@ -380,15 +380,6 @@ tbody tr > :first-child {
   text-align: left;
 }
 
-/* Explicit alignment for result/value columns */
-.amount.uc-pays,
-.amount.retiree-pays,
-.amount.partb {
-  display: inline-block;
-  min-width: 100%;
-  text-align: right;
-}
-
 .amount { color: var(--text); white-space: nowrap; }
 .amount.uc-pays { color: var(--navy); font-weight: 600; }
 .amount.retiree-pays { color: var(--red); font-weight: 600; }
