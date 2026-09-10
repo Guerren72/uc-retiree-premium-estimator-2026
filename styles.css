@@ -936,71 +936,39 @@ tr:not(.na-row) .cov-info-btn {
   border-right: none; /* Keep the "Coverage Level" column clear */
 }
 
-/* Tab 1 Estimator: right-align all premium value columns (2–5) */
-#tab-estimator .results-panel table thead th:nth-child(n+2):nth-child(-n+5),
-#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) {
-  text-align: right !important;
-}
+/* ===== Tab 1 Estimator: final alignment (clean) ===== */
 
-/* Ensure inner value wrappers fill the cell and honor right align */
-#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .amount,
-#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .value-icon {
-  display: inline-flex;
-  justify-content: flex-end;
-  width: 100%;
-  text-align: right;
-}
-
-/* Keep first column left */
+/* First column left */
 #tab-estimator .results-panel table thead th:first-child,
 #tab-estimator .results-panel table tbody th[scope="row"],
 #tab-estimator .results-panel table tbody td:first-child {
   text-align: left !important;
 }
 
-#tab-estimator .results-panel table tbody td:nth-child(5) > * {
-  display: block !important;
-  width: 100% !important;
-  text-align: right !important;
-}
-/* Column 5: vertical center at the table-cell level */
-#tab-estimator .results-panel table tbody td:nth-child(5) {
-  vertical-align: middle !important;
-}
-
-/* If col 5 content is wrapped, keep wrapper as inline-flex (not block) */
-#tab-estimator .results-panel table tbody td:nth-child(5) .amount,
-#tab-estimator .results-panel table tbody td:nth-child(5) .value-icon,
-#tab-estimator .results-panel table tbody td:nth-child(5) .na-cell {
-  display: inline-flex !important;
-  align-items: center !important;
-  vertical-align: middle !important;
-}
-
-/* Tab 1 Estimator: keep numeric/result columns right-aligned (2–5) */
+/* Columns 2–5 right */
 #tab-estimator .results-panel table thead th:nth-child(n+2):nth-child(-n+5),
 #tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) {
   text-align: right !important;
 }
 
-/* Vertical centering for column 5 cells */
+/* Column 5 vertical centering */
 #tab-estimator .results-panel table tbody td:nth-child(5),
 #tab-estimator .results-panel table thead th:nth-child(5) {
   vertical-align: middle !important;
 }
 
-/* Keep value wrappers right-aligned and vertically centered */
+/* Keep numeric wrappers inline and right-aligned (no full-width forcing) */
 #tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .amount,
 #tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .na-cell {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  text-align: right !important;
+  display: inline !important;
+  text-align: inherit !important;
+  vertical-align: middle !important;
 }
 
-/* Keep icon+value combos aligned correctly */
+/* Icons stay inline with values */
 #tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .value-icon {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: middle;
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+  width: auto !important;
 }
