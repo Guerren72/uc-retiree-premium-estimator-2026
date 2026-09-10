@@ -1004,3 +1004,19 @@ tr:not(.na-row) .cov-info-btn {
   align-items: center;
   vertical-align: middle;
 }
+
+/* Append 5th column right-alignment to your specific table rules */
+#tab-estimator .results-panel table tbody td:nth-child(5),
+#tab-estimator .results-panel table thead th:nth-child(5) {
+  text-align: right !important;
+}
+
+/* Force flex elements inside the 5th column to right-align if necessary */
+#tab-estimator .results-panel table td:nth-child(5) .amount {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  text-align: right;
+}
+
