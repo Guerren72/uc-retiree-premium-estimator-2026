@@ -377,7 +377,7 @@ tbody th[scope="row"] {
 }
 
 tbody tr > :first-child {
-  text-align: left;
+  text-align: right;
 }
 
 .amount { color: var(--text); white-space: nowrap; }
