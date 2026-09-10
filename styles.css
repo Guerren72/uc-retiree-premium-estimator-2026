@@ -957,3 +957,9 @@ tr:not(.na-row) .cov-info-btn {
 #tab-estimator .results-panel table tbody td:first-child {
   text-align: left !important;
 }
+
+#tab-estimator .results-panel table tbody td:nth-child(5) > * {
+  display: block !important;
+  width: 100% !important;
+  text-align: right !important;
+}
