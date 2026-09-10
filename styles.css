@@ -380,6 +380,19 @@ tbody tr > :first-child {
   text-align: left;
 }
 
+/* Estimator table: force numeric result columns right */
+.table-wrap table thead th:not(:first-child),
+.table-wrap table tbody td:not(:first-child) {
+  text-align: right;
+}
+
+/* Keep first column (coverage level) left */
+.table-wrap table thead th:first-child,
+.table-wrap table tbody th[scope="row"],
+.table-wrap table tbody td:first-child {
+  text-align: left;
+}
+
 .amount { color: var(--text); white-space: nowrap; }
 .amount.uc-pays { color: var(--navy); font-weight: 600; }
 .amount.retiree-pays { color: var(--red); font-weight: 600; }
