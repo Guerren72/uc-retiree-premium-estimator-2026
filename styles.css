@@ -343,7 +343,7 @@ thead th {
 }
 
 thead th:first-child {
-  text-align: left;
+  text-align: right;
 }
 
 tbody tr {
