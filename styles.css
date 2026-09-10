@@ -380,17 +380,33 @@ tbody tr > :first-child {
   text-align: left;
 }
 
-/* Estimator table: force numeric result columns right */
-.table-wrap table thead th:not(:first-child),
-.table-wrap table tbody td:not(:first-child) {
+/* --- Estimator table: hard right-align value columns --- */
+/* Apply only to Tab 1 results table, not comparison tables */
+#tab-estimator .results-panel table tbody td:nth-child(2),
+#tab-estimator .results-panel table tbody td:nth-child(3),
+#tab-estimator .results-panel table tbody td:nth-child(4),
+#tab-estimator .results-panel table thead th:nth-child(2),
+#tab-estimator .results-panel table thead th:nth-child(3),
+#tab-estimator .results-panel table thead th:nth-child(4) {
+  text-align: right !important;
+}
+
+/* If values are wrapped in inline/flex elements, force wrapper to fill cell width */
+#tab-estimator .results-panel table td:nth-child(2) .amount,
+#tab-estimator .results-panel table td:nth-child(3) .amount,
+#tab-estimator .results-panel table td:nth-child(4) .amount {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
   text-align: right;
 }
 
-/* Keep first column (coverage level) left */
-.table-wrap table thead th:first-child,
-.table-wrap table tbody th[scope="row"],
-.table-wrap table tbody td:first-child {
-  text-align: left;
+/* Keep first column left-aligned */
+#tab-estimator .results-panel table thead th:first-child,
+#tab-estimator .results-panel table tbody th[scope="row"],
+#tab-estimator .results-panel table tbody td:first-child {
+  text-align: left !important;
 }
 
 .amount { color: var(--text); white-space: nowrap; }
