@@ -639,7 +639,7 @@ tr:not(.na-row) .cov-info-btn {
   padding: 11px 10px;
   font-family: 'Segoe UI', serif;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 800;
   text-align: center;
   border-right: 2px solid var(--navy);
   line-height: 1.3;
