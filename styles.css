@@ -385,16 +385,19 @@ tbody tr > :first-child {
 #tab-estimator .results-panel table tbody td:nth-child(2),
 #tab-estimator .results-panel table tbody td:nth-child(3),
 #tab-estimator .results-panel table tbody td:nth-child(4),
+#tab-estimator .results-panel table tbody td:nth-child(5), /* Added column 5 */
 #tab-estimator .results-panel table thead th:nth-child(2),
 #tab-estimator .results-panel table thead th:nth-child(3),
-#tab-estimator .results-panel table thead th:nth-child(4) {
+#tab-estimator .results-panel table thead th:nth-child(4),
+#tab-estimator .results-panel table thead th:nth-child(5) { /* Added column 5 */
   text-align: right !important;
 }
 
 /* If values are wrapped in inline/flex elements, force wrapper to fill cell width */
 #tab-estimator .results-panel table td:nth-child(2) .amount,
 #tab-estimator .results-panel table td:nth-child(3) .amount,
-#tab-estimator .results-panel table td:nth-child(4) .amount {
+#tab-estimator .results-panel table td:nth-child(4) .amount,
+#tab-estimator .results-panel table td:nth-child(5) .amount { /* Added column 5 wrapper */
   display: inline-flex;
   justify-content: flex-end;
   align-items: center;
@@ -408,6 +411,8 @@ tbody tr > :first-child {
 #tab-estimator .results-panel table tbody td:first-child {
   text-align: left !important;
 }
+
+.amount { color: var(--text); white-space: nowrap; }
 
 .amount { color: var(--text); white-space: nowrap; }
 .amount.uc-pays { color: var(--navy); font-weight: 600; }
