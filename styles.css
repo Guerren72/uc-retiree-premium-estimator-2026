@@ -964,3 +964,4 @@ tr:not(.na-row) .cov-info-btn {
   text-align: right !important;
 }
 
+#tab-estimator .results-panel table tbody td { height: 44px; }
