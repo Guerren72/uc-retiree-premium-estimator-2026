@@ -977,7 +977,30 @@ tr:not(.na-row) .cov-info-btn {
   vertical-align: middle !important;
 }
 
-/* If you previously forced all col 5 children to block, undo it */
-#tab-estimator .results-panel table tbody td:nth-child(5) > * {
-  display: inline !important;
+/* Tab 1 Estimator: keep numeric/result columns right-aligned (2–5) */
+#tab-estimator .results-panel table thead th:nth-child(n+2):nth-child(-n+5),
+#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) {
+  text-align: right !important;
+}
+
+/* Vertical centering for column 5 cells */
+#tab-estimator .results-panel table tbody td:nth-child(5),
+#tab-estimator .results-panel table thead th:nth-child(5) {
+  vertical-align: middle !important;
+}
+
+/* Keep value wrappers right-aligned and vertically centered */
+#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .amount,
+#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .na-cell {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  text-align: right !important;
+}
+
+/* Keep icon+value combos aligned correctly */
+#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .value-icon {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
 }
