@@ -936,55 +936,24 @@ tr:not(.na-row) .cov-info-btn {
   border-right: none; /* Keep the "Coverage Level" column clear */
 }
 
-/* =========================================================
-   DIAGNOSTIC ONLY — Tab 1 (Estimator) alignment debugging
-   Remove after testing
-   ========================================================= */
-
-/* 1) Color the target result columns so we can verify column targeting */
-#tab-estimator .results-panel table thead th:nth-child(2),
-#tab-estimator .results-panel table thead th:nth-child(3),
-#tab-estimator .results-panel table thead th:nth-child(4),
-#tab-estimator .results-panel table tbody td:nth-child(2),
-#tab-estimator .results-panel table tbody td:nth-child(3),
-#tab-estimator .results-panel table tbody td:nth-child(4) {
-  background-color: rgba(255, 0, 0, 0.08) !important;
-  outline: 1px dashed rgba(255, 0, 0, 0.55) !important;
+/* Tab 1 Estimator: right-align all premium value columns (2–5) */
+#tab-estimator .results-panel table thead th:nth-child(n+2):nth-child(-n+5),
+#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) {
   text-align: right !important;
 }
 
-/* 2) Show boundaries of common inner wrappers */
-#tab-estimator .results-panel table td:nth-child(2) > *,
-#tab-estimator .results-panel table td:nth-child(3) > *,
-#tab-estimator .results-panel table td:nth-child(4) > * {
-  outline: 1px solid rgba(0, 70, 255, 0.6) !important;
-  background: rgba(0, 70, 255, 0.06) !important;
+/* Ensure inner value wrappers fill the cell and honor right align */
+#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .amount,
+#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .value-icon {
+  display: inline-flex;
+  justify-content: flex-end;
+  width: 100%;
+  text-align: right;
 }
 
-/* 3) Force all immediate children to behave like full-width blocks */
-#tab-estimator .results-panel table td:nth-child(2) > *,
-#tab-estimator .results-panel table td:nth-child(3) > *,
-#tab-estimator .results-panel table td:nth-child(4) > * {
-  display: block !important;
-  width: 100% !important;
-  text-align: right !important;
-}
-
-/* 4) Specifically test your known amount wrappers */
-#tab-estimator .results-panel table td:nth-child(2) .amount,
-#tab-estimator .results-panel table td:nth-child(3) .amount,
-#tab-estimator .results-panel table td:nth-child(4) .amount {
-  display: block !important;
-  width: 100% !important;
-  text-align: right !important;
-  outline: 2px solid rgba(0, 160, 0, 0.7) !important;
-  background: rgba(0, 160, 0, 0.08) !important;
-}
-
-/* 5) Keep first column clearly excluded */
+/* Keep first column left */
 #tab-estimator .results-panel table thead th:first-child,
 #tab-estimator .results-panel table tbody th[scope="row"],
 #tab-estimator .results-panel table tbody td:first-child {
-  background: rgba(255, 255, 0, 0.10) !important;
   text-align: left !important;
 }
