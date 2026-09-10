@@ -963,5 +963,21 @@ tr:not(.na-row) .cov-info-btn {
   width: 100% !important;
   text-align: right !important;
 }
+/* Column 5: vertical center at the table-cell level */
+#tab-estimator .results-panel table tbody td:nth-child(5) {
+  vertical-align: middle !important;
+}
 
-#tab-estimator .results-panel table tbody td { height: 44px; }
+/* If col 5 content is wrapped, keep wrapper as inline-flex (not block) */
+#tab-estimator .results-panel table tbody td:nth-child(5) .amount,
+#tab-estimator .results-panel table tbody td:nth-child(5) .value-icon,
+#tab-estimator .results-panel table tbody td:nth-child(5) .na-cell {
+  display: inline-flex !important;
+  align-items: center !important;
+  vertical-align: middle !important;
+}
+
+/* If you previously forced all col 5 children to block, undo it */
+#tab-estimator .results-panel table tbody td:nth-child(5) > * {
+  display: inline !important;
+}
