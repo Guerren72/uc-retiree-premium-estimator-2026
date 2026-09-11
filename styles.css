@@ -412,7 +412,11 @@ tbody tr > :first-child {
   text-align: left !important;
 }
 
-.amount { color: var(--text); white-space: nowrap; }
+/* Ensure the wrapper structure doesn't break alignment rules */
+.amount { 
+  color: var(--text); 
+  white-space: nowrap; 
+}
 
 .amount { color: var(--text); white-space: nowrap; }
 .amount.uc-pays { color: var(--navy); font-weight: 600; }
