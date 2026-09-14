@@ -503,7 +503,6 @@ function renderEstimator() {
       // You Pay — red, append Negative Value icon when retiree owes > 0
       const payTd = el('td', { cls: 'amount retiree-pays' });
       payTd.appendChild(document.createTextNode(r.retiree <= 0 ? '$0.00' : fmt(r.retiree)));
-      if (r.retiree > 0) payTd.appendChild(makeValueIcon('no'));
       row.appendChild(payTd);
 
       // Part B Reimb — green, append Positive Value icon when reimbursement exists
