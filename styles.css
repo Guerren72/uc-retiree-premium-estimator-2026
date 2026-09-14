@@ -393,11 +393,15 @@ tbody tr > :first-child {
   text-align: right !important;
 }
 
-/* trying again to alighn right */
+/* trying again to align right */
 #tab-estimator .results-panel table td.amount:nth-child(2),
 #tab-estimator .results-panel table td.amount:nth-child(3),
 #tab-estimator .results-panel table td.amount:nth-child(4),
 #tab-estimator .results-panel table td.amount:nth-child(5) {
+  text-align: right !important;
+}
+
+#tab-estimator .results-panel table td.amount.retiree-pays {
   text-align: right !important;
 }
 
