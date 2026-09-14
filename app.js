@@ -508,7 +508,6 @@ function renderEstimator() {
       // Part B Reimb — green, append Positive Value icon when reimbursement exists
       const partbTd = el('td', { cls: 'amount partb' });
       partbTd.appendChild(document.createTextNode(r.partB ? fmt(r.partB) : '—'));
-      if (r.partB) partbTd.appendChild(makeValueIcon('yes'));
       row.appendChild(partbTd);
     }
 
