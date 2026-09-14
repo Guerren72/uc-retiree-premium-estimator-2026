@@ -534,65 +534,6 @@ tr:not(.na-row) .cov-info-btn {
   font-weight: 600;
 }
 
-/* ── Value-sign icon (inline after red/green pricing) ─── */
-.value-icon {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: right;
-  margin-left: 6px;
-  vertical-align: middle;
-  color: inherit;
-  cursor: help;
-  outline: none;
-}
-
-.value-icon svg {
-  width: 16px;
-  height: 16px;
-  display: block;
-  color: inherit;
-}
-
-.value-icon .value-tip {
-  position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--navy);
-  color: white;
-  font-size: 11px;
-  font-weight: 500;
-  font-style: normal;
-  letter-spacing: 0.01em;
-  padding: 4px 9px;
-  border-radius: 5px;
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 200;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.12s ease, visibility 0.12s;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-}
-
-.value-icon .value-tip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 4px solid transparent;
-  border-top-color: var(--navy);
-}
-
-.value-icon:hover .value-tip,
-.value-icon:focus .value-tip,
-.value-icon:focus-visible .value-tip {
-  opacity: 1;
-  visibility: visible;
-}
-
 /* ── Disclaimer ───────────────────────────────── */
 .disclaimer {
   background: var(--warm-gray);
