@@ -439,6 +439,11 @@ tbody tr > :first-child {
   table-layout: fixed;
 }
 
+#tab-estimator .results-panel table tbody td:nth-child(5),
+#tab-estimator .results-panel table thead th:nth-child(5) {
+  text-align: right !important;
+}
+
 /* ── Coverage level tooltip ───────────────────── */
 .cov-cell {
   display: inline-flex;
