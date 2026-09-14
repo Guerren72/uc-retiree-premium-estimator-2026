@@ -398,7 +398,7 @@ tbody tr > :first-child {
 #tab-estimator .results-panel table td.amount.retiree-pays {
   display: flex !important;
   justify-content: flex-end !important;
-  align-items: center !important;
+  align-items: right !important;
   text-align: right !important;
   gap: 6px;
   white-space: nowrap;
