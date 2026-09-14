@@ -435,6 +435,10 @@ tbody tr > :first-child {
   white-space: nowrap;
 }
 
+#tab-estimator .results-panel table {
+  table-layout: fixed;
+}
+
 /* ── Coverage level tooltip ───────────────────── */
 .cov-cell {
   display: inline-flex;
