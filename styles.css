@@ -394,15 +394,14 @@ tbody tr > :first-child {
 }
 
 /* trying again to align right */
-#tab-estimator .results-panel table td.amount:nth-child(2),
-#tab-estimator .results-panel table td.amount:nth-child(3),
-#tab-estimator .results-panel table td.amount:nth-child(4),
-#tab-estimator .results-panel table td.amount:nth-child(5) {
-  text-align: right !important;
-}
-
+/* Force YOU PAY cells to right-align number + icon together */
 #tab-estimator .results-panel table td.amount.retiree-pays {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
   text-align: right !important;
+  gap: 6px;
+  white-space: nowrap;
 }
 
 /* Keep first column left-aligned */
