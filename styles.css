@@ -393,7 +393,6 @@ tbody tr > :first-child {
   text-align: right !important;
 }
 
-/* trying again to align right */
 /* Force YOU PAY cells to right-align number + icon together */
 #tab-estimator .results-panel table tbody td.amount.retiree-pays {
   display: flex !important;
@@ -540,7 +539,7 @@ tr:not(.na-row) .cov-info-btn {
   position: relative;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: right;
   margin-left: 6px;
   vertical-align: middle;
   color: inherit;
