@@ -395,13 +395,13 @@ tbody tr > :first-child {
 
 /* trying again to align right */
 /* Force YOU PAY cells to right-align number + icon together */
-#tab-estimator .results-panel table td.amount.retiree-pays {
+#tab-estimator .results-panel table tbody td.amount.retiree-pays {
   display: flex !important;
   justify-content: flex-end !important;
   align-items: center !important;
-  text-align: right !important;
   gap: 6px;
   white-space: nowrap;
+  width: 100%;
 }
 
 /* Keep first column left-aligned */
