@@ -593,6 +593,16 @@ tr:not(.na-row) .cov-info-btn {
   visibility: visible;
 }
 
+/* default: numeric values right-aligned */
+#tab-estimator .results-panel table td.amount.partb {
+  text-align: right !important;
+}
+
+/* dash-only cells centered */
+#tab-estimator .results-panel table td.amount.partb.partb-dash {
+  text-align: center !important;
+}
+
 /* ── Disclaimer ───────────────────────────────── */
 .disclaimer {
   background: var(--warm-gray);
