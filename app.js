@@ -442,10 +442,11 @@ function renderComparison() {
         row.appendChild(el('td', { cls: 'nav grp-sep', text: 'N/A' }));
         row.appendChild(el('td', { cls: 'nav', text: '—' }));
       } else {
-        row.appendChild(el('td', {
-          cls: r.retiree <= 0 ? 'net zero grp-sep' : 'net grp-sep',
-          text: r.retiree <= 0 ? '$0.00' : fmt(r.retiree),
-        }));
+const isZero = r.retiree <= 0;
+row.appendChild(el('td', {
+  cls: `net ${isZero ? 'zero' : 'nonzero'} grp-sep`,
+  text: isZero ? '$0.00' : fmt(r.retiree),
+}));
         row.appendChild(el('td', { cls: 'pbv', text: r.partB ? fmt(r.partB) : '—' }));
       }
     }
