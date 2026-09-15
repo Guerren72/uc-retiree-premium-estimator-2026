@@ -432,12 +432,6 @@ function renderComparison() {
     const results = COMP_PLANS.map(p => calcRow(p, lv, ucPct));
     const row = document.createElement('tr');
     if (!results.some(r => r !== null)) row.classList.add('na-row');
-
-const net = Number(rawNetValue); // raw numeric value before formatting
-const cls = `net ${net === 0 ? 'zero' : 'nonzero'}`;
-html += `<td class="${cls}">${formatCurrency(net)}</td>`;
-
-const net = Number(String(rawNetValue).replace(/[^0-9.-]/g, '')) || 0;
      
     const firstTh = el('th', { cls: 'cov-head', attrs: { scope: 'row' } });
     firstTh.appendChild(makeCovCell(lv));
