@@ -142,21 +142,25 @@ const PARTB_PERSONS = { M: 1, MM: 2, MC: 1, MA: 1, MAC: 1, MMM: 3, MMC: 2 };
 const PARTB_MAX = 185;
 const LEVELS = ['U', 'UC', 'UA', 'UAC', 'M', 'MM', 'MC', 'MA', 'MAC', 'MMM', 'MMC'];
 
-const G2_SVC = { 10: 0.50, 11: 0.55, 12: 0.60, 13: 0.65, 14: 0.70, 15: 0.75, 16: 0.80, 17: 0.85, 18: 0.90, 19: 0.95, 20: 1.00 };
-const G3_SVCS = [10,11,12,13,14,15,16,17,18,19,20];
-const G3_AGES = [50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65];
+const G2_SVC = {
+  10: 0.50, 11: 0.55, 12: 0.60, 13: 0.65, 14: 0.70,
+  15: 0.75, 16: 0.80, 17: 0.85, 18: 0.90, 19: 0.95, 20: 1.00,
+};
+
+const G3_SVCS = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+const G3_AGES = [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65];
 const G3_DATA = [
-  [0,0,0,0,0,0,0.050,0.100,0.150,0.200,0.250,0.300,0.350,0.400,0.450,0.500],
-  [0,0,0,0,0,0,0.055,0.110,0.165,0.220,0.275,0.330,0.385,0.440,0.495,0.550],
-  [0,0,0,0,0,0,0.060,0.120,0.180,0.240,0.300,0.360,0.420,0.480,0.540,0.600],
-  [0,0,0,0,0,0,0.065,0.130,0.195,0.260,0.325,0.390,0.455,0.520,0.585,0.650],
-  [0,0,0,0,0,0,0.070,0.140,0.210,0.280,0.350,0.420,0.490,0.560,0.630,0.700],
-  [0,0,0,0,0,0,0.075,0.150,0.225,0.300,0.375,0.450,0.525,0.600,0.675,0.750],
-  [0,0,0,0,0,0,0.080,0.160,0.240,0.320,0.400,0.480,0.560,0.640,0.720,0.800],
-  [0,0,0,0,0,0,0.085,0.170,0.255,0.340,0.425,0.510,0.595,0.680,0.765,0.850],
-  [0,0,0,0,0,0,0.090,0.180,0.270,0.360,0.450,0.540,0.630,0.720,0.810,0.900],
-  [0,0,0,0,0,0,0.095,0.190,0.285,0.380,0.475,0.570,0.665,0.760,0.855,0.950],
-  [0,0,0,0,0,0,0.100,0.200,0.300,0.400,0.500,0.600,0.700,0.800,0.900,1.000],
+  [0, 0, 0, 0, 0, 0, 0.050, 0.100, 0.150, 0.200, 0.250, 0.300, 0.350, 0.400, 0.450, 0.500],
+  [0, 0, 0, 0, 0, 0, 0.055, 0.110, 0.165, 0.220, 0.275, 0.330, 0.385, 0.440, 0.495, 0.550],
+  [0, 0, 0, 0, 0, 0, 0.060, 0.120, 0.180, 0.240, 0.300, 0.360, 0.420, 0.480, 0.540, 0.600],
+  [0, 0, 0, 0, 0, 0, 0.065, 0.130, 0.195, 0.260, 0.325, 0.390, 0.455, 0.520, 0.585, 0.650],
+  [0, 0, 0, 0, 0, 0, 0.070, 0.140, 0.210, 0.280, 0.350, 0.420, 0.490, 0.560, 0.630, 0.700],
+  [0, 0, 0, 0, 0, 0, 0.075, 0.150, 0.225, 0.300, 0.375, 0.450, 0.525, 0.600, 0.675, 0.750],
+  [0, 0, 0, 0, 0, 0, 0.080, 0.160, 0.240, 0.320, 0.400, 0.480, 0.560, 0.640, 0.720, 0.800],
+  [0, 0, 0, 0, 0, 0, 0.085, 0.170, 0.255, 0.340, 0.425, 0.510, 0.595, 0.680, 0.765, 0.850],
+  [0, 0, 0, 0, 0, 0, 0.090, 0.180, 0.270, 0.360, 0.450, 0.540, 0.630, 0.720, 0.810, 0.900],
+  [0, 0, 0, 0, 0, 0, 0.095, 0.190, 0.285, 0.380, 0.475, 0.570, 0.665, 0.760, 0.855, 0.950],
+  [0, 0, 0, 0, 0, 0, 0.100, 0.200, 0.300, 0.400, 0.500, 0.600, 0.700, 0.800, 0.900, 1.000],
 ];
 
 const COMP_PLANS = [
@@ -188,16 +192,25 @@ function el(tag, { cls, text, attrs } = {}) {
   }
   return node;
 }
-function replaceChildren(container, ...children) { if (container) container.replaceChildren(...children); }
+
+function replaceChildren(container, ...children) {
+  if (container) container.replaceChildren(...children);
+}
+
 function makeCovCell(level) {
   const wrapper = el('div', { cls: 'cov-cell' });
   const code = el('span', { text: level, attrs: { style: 'font-weight:600;color:var(--navy)' } });
   const tipWrap = el('span', { cls: 'cov-tip-wrap' });
   const btn = el('span', { cls: 'cov-info-btn', text: 'i', attrs: { tabindex: '0', 'aria-label': COV_DESCS[level] } });
   const tip = el('span', { cls: 'cov-tooltip', text: COV_DESCS[level], attrs: { role: 'tooltip' } });
-  tipWrap.appendChild(btn); tipWrap.appendChild(tip); wrapper.appendChild(code); wrapper.appendChild(tipWrap);
+
+  tipWrap.appendChild(btn);
+  tipWrap.appendChild(tip);
+  wrapper.appendChild(code);
+  wrapper.appendChild(tipWrap);
   return wrapper;
 }
+
 function makePlaceholder(icon, message) {
   const wrap = el('div', { cls: 'placeholder-msg' });
   wrap.appendChild(el('div', { cls: 'icon', text: icon }));
@@ -215,6 +228,7 @@ function calcUCPct(group, age, service) {
     if (age >= 50 && svc >= 10) return 1.0;
     return null;
   }
+
   if (group === 'group2') {
     const svc = Math.floor(service);
     if (svc >= 10) return G2_SVC[Math.min(svc, 20)] ?? null;
@@ -222,34 +236,42 @@ function calcUCPct(group, age, service) {
     if ((age + svc) >= 75) return G2_SVC[10];
     return null;
   }
+
   if (group === 'group3') {
     if (service < 10 || age < 50) return null;
     const si = G3_SVCS.indexOf(Math.min(Math.floor(service), 20));
     const ai = G3_AGES.indexOf(Math.min(Math.floor(age), 65));
     return (si < 0 || ai < 0) ? null : G3_DATA[si][ai];
   }
+
   return null;
 }
+
 function ageIsRequired(group, service) {
   if (group === 'group1') return true;
   if (group === 'group2') return !isNaN(service) && Math.floor(service) < 10;
   if (group === 'group3') return true;
   return false;
 }
+
 function calcRow(plan, level, ucPct) {
   const data = RATES[`${plan} ${level}`];
   if (!data) return null;
+
   const [total, maxUC] = data;
   const ucPays = Math.min(total, parseFloat((ucPct * maxUC).toFixed(2)));
   const retiree = Math.max(0, parseFloat((total - ucPays).toFixed(2)));
   const persons = PARTB_PERSONS[level] ?? 0;
+
   let partB = null;
   if (persons > 0 && retiree === 0) {
     const overage = parseFloat((ucPct * maxUC - total).toFixed(2));
     if (overage > 0) partB = Math.min(overage, persons * PARTB_MAX);
   }
+
   return { total, maxUC, ucPays, retiree, partB };
 }
+
 function getActivePct() {
   const ovEl = document.getElementById('override-pct');
   const ov = ovEl ? ovEl.value : '';
@@ -269,8 +291,14 @@ function getActivePct() {
   if (g === 'group2' && Math.floor(s) >= 10) return calcUCPct(g, a, s);
   return !isNaN(a) ? calcUCPct(g, a, s) : null;
 }
-function fmt(v) { return '$' + v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-function pctStr(v) { return (v * 100).toFixed(2).replace(/\.?0+$/, '') + '%'; }
+
+function fmt(v) {
+  return '$' + v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function pctStr(v) {
+  return (v * 100).toFixed(2).replace(/\.?0+$/, '') + '%';
+}
 
 /* renders */
 function renderEstimator() {
@@ -324,6 +352,7 @@ function renderEstimator() {
     renderVisionLegal();
     return;
   }
+
   if (ucPct === null) {
     replaceChildren(area, makePlaceholder('⚠️', 'Cannot calculate — check eligibility inputs or enter UC % manually.'));
     renderComparison();
@@ -334,12 +363,15 @@ function renderEstimator() {
   const table = document.createElement('table');
   const thead = document.createElement('thead');
   const hdr = document.createElement('tr');
+
   ['Coverage Level', 'Total Premium', 'Max UC Contrib.', 'UC Pays', 'You Pay', 'Part B Reimb.']
     .forEach(text => hdr.appendChild(el('th', { text, attrs: { scope: 'col' } })));
+
   thead.appendChild(hdr);
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
+
   for (const lv of LEVELS) {
     const r = calcRow(plan, lv, ucPct);
     const row = document.createElement('tr');
@@ -360,11 +392,17 @@ function renderEstimator() {
       row.appendChild(el('td', { cls: 'amount', text: fmt(r.maxUC) }));
       row.appendChild(el('td', { cls: 'amount uc-pays', text: fmt(r.ucPays) }));
       row.appendChild(el('td', { cls: 'amount retiree-pays', text: r.retiree <= 0 ? '$0.00' : fmt(r.retiree) }));
+
       const isDash = !r.partB;
-      row.appendChild(el('td', { cls: `amount partb${isDash ? ' partb-dash' : ''}`, text: isDash ? '—' : fmt(r.partB) }));
+      row.appendChild(el('td', {
+        cls: `amount partb${isDash ? ' partb-dash' : ''}`,
+        text: isDash ? '—' : fmt(r.partB),
+      }));
     }
+
     tbody.appendChild(row);
   }
+
   table.appendChild(tbody);
   replaceChildren(area, table);
 
@@ -376,6 +414,7 @@ function renderComparison() {
   const ucPct = getActivePct();
   const compLabel = document.getElementById('comp-pct-label');
   const tbody = document.getElementById('comp-tbody');
+
   if (!tbody) return;
   if (compLabel) compLabel.textContent = ucPct !== null ? pctStr(ucPct) : '—';
 
@@ -403,10 +442,14 @@ function renderComparison() {
         row.appendChild(el('td', { cls: 'nav grp-sep', text: 'N/A' }));
         row.appendChild(el('td', { cls: 'nav', text: '—' }));
       } else {
-        row.appendChild(el('td', { cls: r.retiree <= 0 ? 'net zero grp-sep' : 'net grp-sep', text: r.retiree <= 0 ? '$0.00' : fmt(r.retiree) }));
+        row.appendChild(el('td', {
+          cls: r.retiree <= 0 ? 'net zero grp-sep' : 'net grp-sep',
+          text: r.retiree <= 0 ? '$0.00' : fmt(r.retiree),
+        }));
         row.appendChild(el('td', { cls: 'pbv', text: r.partB ? fmt(r.partB) : '—' }));
       }
     }
+
     return row;
   });
 
@@ -421,17 +464,23 @@ function renderVisionLegal() {
 
 /* tabs/events */
 function showTab(tabId) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === tabId));
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tabId);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === tabId);
+  });
 
+  if (tabId === 'tab-estimator') renderEstimator();
   if (tabId === 'tab-comparison') renderComparison();
   if (tabId === 'tab-vl') renderVisionLegal();
-  if (tabId === 'tab-estimator') renderEstimator();
 }
 
 function initTabs() {
   const buttons = document.querySelectorAll('.tab-btn');
-  buttons.forEach(btn => btn.addEventListener('click', () => showTab(btn.dataset.tab)));
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => showTab(btn.dataset.tab));
+  });
 
   const active = document.querySelector('.tab-btn.active')?.dataset.tab || 'tab-estimator';
   showTab(active);
@@ -441,8 +490,8 @@ function initEvents() {
   ['group', 'age', 'service', 'plan', 'override-pct'].forEach(id => {
     const node = document.getElementById(id);
     if (!node) return;
-    node.addEventListener('input',  () => { renderEstimator(); });
-    node.addEventListener('change', () => { renderEstimator(); });
+    node.addEventListener('input', () => renderEstimator());
+    node.addEventListener('change', () => renderEstimator());
   });
 }
 
