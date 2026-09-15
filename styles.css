@@ -656,7 +656,7 @@ tr:not(.na-row) .cov-info-btn {
   font-family: 'Segoe UI', serif;
   font-size: 20px;
   font-weight: 500;
-  color: var(--navy);
+  color: var(--red);
 }
 
 .contrib-pill {
