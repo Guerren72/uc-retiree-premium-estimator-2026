@@ -667,7 +667,7 @@ tr:not(.na-row) .cov-info-btn {
 
 .contrib-pill {
   background: var(--navy);
-  color: var(--gold);
+  color: var(--green);
   border-radius: 20px;
   padding: 5px 16px;
   font-size: 20px;
