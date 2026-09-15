@@ -202,7 +202,7 @@ const JAVASCRIPT_RE = /^\s*javascript:/i;
 
 function el(tag, { cls, text, attrs } = {}) {
   const node = document.createElement(tag);
-  if (cls)              node.className   = cls;
+  if (cls)                node.className = cls;
   if (text !== undefined) node.textContent = text;
 
   if (attrs) {
@@ -232,10 +232,8 @@ function makeCovCell(level) {
   const wrapper = el('div', { cls: 'cov-cell' });
   const code    = el('span', { text: level, attrs: { style: 'font-weight:600;color:var(--navy)' } });
   const tipWrap = el('span', { cls: 'cov-tip-wrap' });
-  const btn     = el('span', { cls: 'cov-info-btn', text: 'i',
-                               attrs: { tabindex: '0', 'aria-label': COV_DESCS[level] } });
-  const tip     = el('span', { cls: 'cov-tooltip', text: COV_DESCS[level],
-                               attrs: { role: 'tooltip' } });
+  const btn     = el('span', { cls: 'cov-info-btn', text: 'i', attrs: { tabindex: '0', 'aria-label': COV_DESCS[level] } });
+  const tip     = el('span', { cls: 'cov-tooltip', text: COV_DESCS[level], attrs: { role: 'tooltip' } });
 
   tipWrap.appendChild(btn);
   tipWrap.appendChild(tip);
@@ -256,7 +254,7 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 function makeValueIcon(kind) {
   const label = kind === 'no' ? 'You Pay' : "You're Reimbursed";
   const wrap  = el('span', {
-    cls:   `value-icon value-${kind}`,
+    cls: `value-icon value-${kind}`,
     attrs: { tabindex: '0', role: 'img', 'aria-label': label },
   });
 
@@ -280,7 +278,7 @@ function makeValueIcon(kind) {
 function makePlaceholder(icon, message) {
   const wrap = el('div', { cls: 'placeholder-msg' });
   wrap.appendChild(el('div', { cls: 'icon', text: icon }));
-  wrap.appendChild(el('p',   { text: message }));
+  wrap.appendChild(el('p', { text: message }));
   return wrap;
 }
 
@@ -292,10 +290,6 @@ function makePlaceholder(icon, message) {
 /** Returns UC contribution as a decimal (0–1), or null if ineligible. */
 function calcUCPct(group, age, service) {
   if (group === 'group1') {
-    // Group 1 eligibility:
-    //   Age 50–54: at least 10 years of UCRP service credit required
-    //   Age 55+:   at least 5 years of UCRP service credit required
-    // If eligible, UC pays 100% of the max contribution.
     if (isNaN(age) || isNaN(service)) return null;
     const svc = Math.floor(service);
     if (age < 50) return null;
@@ -308,21 +302,14 @@ function calcUCPct(group, age, service) {
     const svc = Math.floor(service);
 
     if (svc >= 10) {
-      // Age is completely irrelevant for Group 2 with 10+ years of service.
-      // Contribution is determined solely by service credit (capped at 20 years).
       return G2_SVC[Math.min(svc, 20)] ?? null;
     }
 
-    // service < 10: age is needed only to evaluate Rule 75 (age + service ≥ 75).
-    // Minimum eligibility: age ≥ 55 and service ≥ 5.
-    if (age < 55)  return null;
-    if (svc < 5)   return null;
+    if (age < 55) return null;
+    if (svc < 5) return null;
+    if ((age + svc) >= 75) return G2_SVC[10];
 
-    // Rule 75: age + service ≥ 75 → minimum contribution tier (50%).
-    // Source: spreadsheet I19 → LOOKUP(10, C60:C70, D60:D70) = 0.50
-    if ((age + svc) >= 75) return G2_SVC[10]; // 0.50
-
-    return null; // service < 10 and Rule 75 not met
+    return null;
   }
 
   if (group === 'group3') {
@@ -335,12 +322,6 @@ function calcUCPct(group, age, service) {
   return null;
 }
 
-/**
- * Returns true when the age field is needed to compute the UC contribution.
- *   Group 1 — always needed (age determines service-credit eligibility threshold).
- *   Group 2 — only needed when service is entered AND is < 10 (Rule 75 check).
- *   Group 3 — always needed (age × service lookup table).
- */
 function ageIsRequired(group, service) {
   if (group === 'group1') return true;
   if (group === 'group2') return !isNaN(service) && Math.floor(service) < 10;
@@ -348,17 +329,13 @@ function ageIsRequired(group, service) {
   return false;
 }
 
-/**
- * Calculates the premium breakdown for a single plan + coverage level.
- * Returns null if the combination is N/A.
- */
 function calcRow(plan, level, ucPct) {
   const data = RATES[`${plan} ${level}`];
   if (!data) return null;
 
   const [total, maxUC] = data;
   const ucPays  = Math.min(total, parseFloat((ucPct * maxUC).toFixed(2)));
-  const retiree = Math.max(0,     parseFloat((total - ucPays).toFixed(2)));
+  const retiree = Math.max(0, parseFloat((total - ucPays).toFixed(2)));
   const persons = PARTB_PERSONS[level] ?? 0;
 
   let partB = null;
@@ -370,7 +347,6 @@ function calcRow(plan, level, ucPct) {
   return { total, maxUC, ucPays, retiree, partB };
 }
 
-/** Reads the active UC % from the form (manual override takes precedence). */
 function getActivePct() {
   const ov = document.getElementById('override-pct').value;
   if (ov !== '' && !isNaN(parseFloat(ov))) return parseFloat(ov) / 100;
@@ -380,30 +356,17 @@ function getActivePct() {
   const a = parseFloat(document.getElementById('age').value);
 
   if (!g || isNaN(s)) return null;
-
-  // Group 1 now requires age (age determines service-credit threshold).
   if (g === 'group1') return !isNaN(a) ? calcUCPct(g, a, s) : null;
-
-  // Group 2 with service ≥ 10: age is not needed, proceed without it.
   if (g === 'group2' && Math.floor(s) >= 10) return calcUCPct(g, a, s);
-
-  // All other cases (Group 2 service < 10, Group 3) require age.
   return !isNaN(a) ? calcUCPct(g, a, s) : null;
 }
 
-/** Formats a number as a dollar string, e.g. "$1,234.56". */
 function fmt(v) {
   return '$' + v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-/**
- * Formats a decimal fraction as a percentage string, preserving fractional
- * precision (so 0.385 renders as "38.5%", not "39%"). Whole-number
- * percentages drop their decimal (so 0.75 renders as "75%", not "75.0%").
- */
 function pctStr(v) {
   const pct = v * 100;
-  // Show up to 2 decimal places, then trim trailing zeros and a trailing dot.
   return pct.toFixed(2).replace(/\.?0+$/, '') + '%';
 }
 
@@ -413,12 +376,11 @@ function pctStr(v) {
    ════════════════════════════════════════════════ */
 
 function renderEstimator() {
-  const g       = document.getElementById('group').value;
-  const s       = parseFloat(document.getElementById('service').value);
+  const g        = document.getElementById('group').value;
+  const s        = parseFloat(document.getElementById('service').value);
   const ageField = document.getElementById('age');
   const ageHint  = document.getElementById('age-hint');
 
-  // Age field visibility and state
   const needAge = ageIsRequired(g, s);
   ageField.disabled = !needAge;
   ageField.style.opacity = needAge ? '1' : '0.45';
@@ -448,7 +410,6 @@ function renderEstimator() {
     disp.className   = 'contrib-value';
   }
 
-  // title comes from a controlled <select>, but we still use textContent
   document.getElementById('results-title').textContent = plan || 'Premium Results';
 
   const area = document.getElementById('results-area');
@@ -456,16 +417,16 @@ function renderEstimator() {
   if (!plan) {
     replaceChildren(area, makePlaceholder('📋', 'Select a plan to view premium estimates.'));
     renderComparison();
+    renderVisionLegal();
     return;
   }
 
   if (ucPct === null) {
     replaceChildren(area, makePlaceholder('⚠️', 'Cannot calculate — check eligibility inputs or enter UC % manually.'));
     renderComparison();
+    renderVisionLegal();
     return;
   }
-
-  // ── Build results table entirely via DOM ──────
 
   const table = document.createElement('table');
   const thead = document.createElement('thead');
@@ -483,7 +444,6 @@ function renderEstimator() {
     const r   = calcRow(plan, lv, ucPct);
     const row = document.createElement('tr');
 
-    // Coverage level header cell (th, scope=row)
     const firstTh = el('th', { cls: 'cov-head', attrs: { scope: 'row' } });
     firstTh.appendChild(makeCovCell(lv));
     row.appendChild(firstTh);
@@ -491,25 +451,23 @@ function renderEstimator() {
     if (!r) {
       row.classList.add('na-row');
       row.appendChild(el('td', {
-        cls:   'na-cell',
-        text:  'Not available',
+        cls: 'na-cell',
+        text: 'Not available',
         attrs: { colspan: '5', style: 'text-align:center' },
       }));
     } else {
-      row.appendChild(el('td', { cls: 'amount',           text: fmt(r.total) }));
-      row.appendChild(el('td', { cls: 'amount',           text: fmt(r.maxUC) }));
-      row.appendChild(el('td', { cls: 'amount uc-pays',   text: fmt(r.ucPays) }));
+      row.appendChild(el('td', { cls: 'amount', text: fmt(r.total) }));
+      row.appendChild(el('td', { cls: 'amount', text: fmt(r.maxUC) }));
+      row.appendChild(el('td', { cls: 'amount uc-pays', text: fmt(r.ucPays) }));
 
-      // You Pay — red, append Negative Value icon when retiree owes > 0
       const payTd = el('td', { cls: 'amount retiree-pays' });
       payTd.appendChild(document.createTextNode(r.retiree <= 0 ? '$0.00' : fmt(r.retiree)));
       row.appendChild(payTd);
 
-      // Part B Reimb — green, append Positive Value icon when reimbursement exists
-const isDash = !r.partB;
-const partbTd = el('td', { cls: `amount partb${isDash ? ' partb-dash' : ''}` });
-partbTd.appendChild(document.createTextNode(isDash ? '—' : fmt(r.partB)));
-row.appendChild(partbTd);
+      const isDash = !r.partB;
+      const partbTd = el('td', { cls: `amount partb${isDash ? ' partb-dash' : ''}` });
+      partbTd.appendChild(document.createTextNode(isDash ? '—' : fmt(r.partB)));
+      row.appendChild(partbTd);
     }
 
     tbody.appendChild(row);
@@ -518,6 +476,7 @@ row.appendChild(partbTd);
   table.appendChild(tbody);
   replaceChildren(area, table);
   renderComparison();
+  renderVisionLegal();
 }
 
 
@@ -527,14 +486,16 @@ row.appendChild(partbTd);
 
 function renderComparison() {
   const ucPct = getActivePct();
-  document.getElementById('comp-pct-label').textContent = ucPct !== null ? pctStr(ucPct) : '—';
+  const compLabel = document.getElementById('comp-pct-label');
+  if (compLabel) compLabel.textContent = ucPct !== null ? pctStr(ucPct) : '—';
 
   const tbody = document.getElementById('comp-tbody');
+  if (!tbody) return;
 
   if (ucPct === null) {
     const row = document.createElement('tr');
     row.appendChild(el('td', {
-      text:  'Set your eligibility inputs on the Estimator tab to populate this chart.',
+      text: 'Set your eligibility inputs on the Estimator tab to populate this chart.',
       attrs: { colspan: '17', style: 'padding:32px;text-align:center;color:var(--text-muted);font-size:13px;' },
     }));
     replaceChildren(tbody, row);
@@ -553,13 +514,13 @@ function renderComparison() {
     for (const r of results) {
       if (!r) {
         row.appendChild(el('td', { cls: 'nav grp-sep', text: 'N/A' }));
-        row.appendChild(el('td', { cls: 'nav',         text: '—'   }));
+        row.appendChild(el('td', { cls: 'nav', text: '—' }));
       } else {
         row.appendChild(el('td', {
-          cls:  r.retiree <= 0 ? 'net zero grp-sep' : 'net grp-sep',
+          cls: r.retiree <= 0 ? 'net zero grp-sep' : 'net grp-sep',
           text: r.retiree <= 0 ? '$0.00' : fmt(r.retiree),
         }));
-        // Part B Reimb — green, append Positive Value icon when reimbursement exists
+
         const pbvTd = el('td', { cls: 'pbv' });
         pbvTd.appendChild(document.createTextNode(r.partB ? fmt(r.partB) : '—'));
         if (r.partB) pbvTd.appendChild(makeValueIcon('yes'));
@@ -578,11 +539,6 @@ function renderComparison() {
    TAB 3 — VISION, LEGAL PREMIUMS
    ════════════════════════════════════════════════ */
 
-/**
- * Renders the Vision & Legal Premiums tab. Premium rate data is not yet
- * wired in; this keeps the tab label/header/structure intact and updates
- * the shared UC-contribution pill so the tab is ready to be populated.
- */
 function renderVisionLegal() {
   const ucPct = getActivePct();
   const pill  = document.getElementById('vl-pct-label');
@@ -599,8 +555,19 @@ function initTabs() {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
       btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
+      const target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('active');
+
+      // Force refresh when switching tabs so they never appear blank
+      if (btn.dataset.tab === 'tab-comparison') {
+        renderComparison();
+      } else if (btn.dataset.tab === 'tab-vl') {
+        renderVisionLegal();
+      } else if (btn.dataset.tab === 'tab-estimator') {
+        renderEstimator();
+      }
     });
   });
 }
@@ -613,6 +580,7 @@ function initTabs() {
 function initEvents() {
   ['group', 'age', 'service', 'plan', 'override-pct'].forEach(id => {
     const node = document.getElementById(id);
+    if (!node) return;
     node.addEventListener('input',  () => { renderEstimator(); renderVisionLegal(); });
     node.addEventListener('change', () => { renderEstimator(); renderVisionLegal(); });
   });
@@ -628,4 +596,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initEvents();
   renderVisionLegal();
   renderEstimator();
+  renderComparison(); // ensure comparison is initialized
 });
