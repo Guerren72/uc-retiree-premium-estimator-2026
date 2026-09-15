@@ -730,7 +730,7 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl thead tr:nth-child(2) th:first-child {
   text-align: left;
   border-right: 2px solid var(--border);
-  font-weight: 800;
+  font-weight: 1200;
 }
 
 .comp-tbl tbody tr {
