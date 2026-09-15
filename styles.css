@@ -675,7 +675,7 @@ tr:not(.na-row) .cov-info-btn {
 }
 
 .contrib-pill span {
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--gold);
   font-weight: 400;
 }
 
