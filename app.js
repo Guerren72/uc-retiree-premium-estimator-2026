@@ -138,36 +138,27 @@ const COV_DESCS = {
   MMC: "MMC = Medicare-eligible Retiree + Medicare-eligible Adult + Child(ren) OR Medicare-eligible Retiree + Adult + Medicare-eligible Child",
 };
 
-// Medicare Part B reimbursement: number of covered persons per level
 const PARTB_PERSONS = { M: 1, MM: 2, MC: 1, MA: 1, MAC: 1, MMM: 3, MMC: 2 };
-const PARTB_MAX     = 185; // max reimbursement per person per month
-
+const PARTB_MAX = 185;
 const LEVELS = ['U', 'UC', 'UA', 'UAC', 'M', 'MM', 'MC', 'MA', 'MAC', 'MMM', 'MMC'];
 
-// Group 2: service credit → UC contribution fraction
-const G2_SVC = {
-  10: 0.50, 11: 0.55, 12: 0.60, 13: 0.65, 14: 0.70,
-  15: 0.75, 16: 0.80, 17: 0.85, 18: 0.90, 19: 0.95, 20: 1.00,
-};
-
-// Group 3 lookup table (rows = service 10–20, cols = age 50–65)
-const G3_SVCS = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-const G3_AGES = [50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65];
+const G2_SVC = { 10: 0.50, 11: 0.55, 12: 0.60, 13: 0.65, 14: 0.70, 15: 0.75, 16: 0.80, 17: 0.85, 18: 0.90, 19: 0.95, 20: 1.00 };
+const G3_SVCS = [10,11,12,13,14,15,16,17,18,19,20];
+const G3_AGES = [50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65];
 const G3_DATA = [
-  /* svc=10 */ [0, 0, 0, 0, 0, 0, 0.050, 0.100, 0.150, 0.200, 0.250, 0.300, 0.350, 0.400, 0.450, 0.500],
-  /* svc=11 */ [0, 0, 0, 0, 0, 0, 0.055, 0.110, 0.165, 0.220, 0.275, 0.330, 0.385, 0.440, 0.495, 0.550],
-  /* svc=12 */ [0, 0, 0, 0, 0, 0, 0.060, 0.120, 0.180, 0.240, 0.300, 0.360, 0.420, 0.480, 0.540, 0.600],
-  /* svc=13 */ [0, 0, 0, 0, 0, 0, 0.065, 0.130, 0.195, 0.260, 0.325, 0.390, 0.455, 0.520, 0.585, 0.650],
-  /* svc=14 */ [0, 0, 0, 0, 0, 0, 0.070, 0.140, 0.210, 0.280, 0.350, 0.420, 0.490, 0.560, 0.630, 0.700],
-  /* svc=15 */ [0, 0, 0, 0, 0, 0, 0.075, 0.150, 0.225, 0.300, 0.375, 0.450, 0.525, 0.600, 0.675, 0.750],
-  /* svc=16 */ [0, 0, 0, 0, 0, 0, 0.080, 0.160, 0.240, 0.320, 0.400, 0.480, 0.560, 0.640, 0.720, 0.800],
-  /* svc=17 */ [0, 0, 0, 0, 0, 0, 0.085, 0.170, 0.255, 0.340, 0.425, 0.510, 0.595, 0.680, 0.765, 0.850],
-  /* svc=18 */ [0, 0, 0, 0, 0, 0, 0.090, 0.180, 0.270, 0.360, 0.450, 0.540, 0.630, 0.720, 0.810, 0.900],
-  /* svc=19 */ [0, 0, 0, 0, 0, 0, 0.095, 0.190, 0.285, 0.380, 0.475, 0.570, 0.665, 0.760, 0.855, 0.950],
-  /* svc=20 */ [0, 0, 0, 0, 0, 0, 0.100, 0.200, 0.300, 0.400, 0.500, 0.600, 0.700, 0.800, 0.900, 1.000],
+  [0,0,0,0,0,0,0.050,0.100,0.150,0.200,0.250,0.300,0.350,0.400,0.450,0.500],
+  [0,0,0,0,0,0,0.055,0.110,0.165,0.220,0.275,0.330,0.385,0.440,0.495,0.550],
+  [0,0,0,0,0,0,0.060,0.120,0.180,0.240,0.300,0.360,0.420,0.480,0.540,0.600],
+  [0,0,0,0,0,0,0.065,0.130,0.195,0.260,0.325,0.390,0.455,0.520,0.585,0.650],
+  [0,0,0,0,0,0,0.070,0.140,0.210,0.280,0.350,0.420,0.490,0.560,0.630,0.700],
+  [0,0,0,0,0,0,0.075,0.150,0.225,0.300,0.375,0.450,0.525,0.600,0.675,0.750],
+  [0,0,0,0,0,0,0.080,0.160,0.240,0.320,0.400,0.480,0.560,0.640,0.720,0.800],
+  [0,0,0,0,0,0,0.085,0.170,0.255,0.340,0.425,0.510,0.595,0.680,0.765,0.850],
+  [0,0,0,0,0,0,0.090,0.180,0.270,0.360,0.450,0.540,0.630,0.720,0.810,0.900],
+  [0,0,0,0,0,0,0.095,0.190,0.285,0.380,0.475,0.570,0.665,0.760,0.855,0.950],
+  [0,0,0,0,0,0,0.100,0.200,0.300,0.400,0.500,0.600,0.700,0.800,0.900,1.000],
 ];
 
-// The 8 medical plans shown in the comparison tab (order matches table columns)
 const COMP_PLANS = [
   "UC Blue & Gold HMO/UC Medicare Choice",
   "Kaiser Permanente/Senior Advantage HMO",
@@ -179,32 +170,15 @@ const COMP_PLANS = [
   "UC Medicare Choice",
 ];
 
-
-/* ════════════════════════════════════════════════
-   DOM HELPERS
-   ════════════════════════════════════════════════ */
-
-/**
- * Creates an element with optional className, textContent, and attributes.
- * Text is always assigned via .textContent and is never parsed as HTML,
- * making this safe against XSS regardless of the string's contents.
- *
- * Attribute safety rules (defense-in-depth for future callers):
- *   - Any attribute whose name starts with "on" (e.g. onclick) is silently dropped.
- *   - Any URL attribute (href, src, xlink:href) whose value begins with "javascript:"
- *     is silently dropped.
- * All values here are controlled constants, so these guards are purely
- * protective against future misuse of this helper.
- */
+/* helpers */
 const BLOCKED_ATTR  = /^on/i;
 const URL_ATTRS     = new Set(['href', 'src', 'xlink:href']);
 const JAVASCRIPT_RE = /^\s*javascript:/i;
 
 function el(tag, { cls, text, attrs } = {}) {
   const node = document.createElement(tag);
-  if (cls)                node.className = cls;
+  if (cls) node.className = cls;
   if (text !== undefined) node.textContent = text;
-
   if (attrs) {
     for (const [k, v] of Object.entries(attrs)) {
       if (BLOCKED_ATTR.test(k)) continue;
@@ -212,69 +186,18 @@ function el(tag, { cls, text, attrs } = {}) {
       node.setAttribute(k, v);
     }
   }
-
   return node;
 }
-
-/**
- * Replaces all children of `container` with the provided nodes.
- * Never touches innerHTML.
- */
-function replaceChildren(container, ...children) {
-  container.replaceChildren(...children);
-}
-
-/**
- * Builds the coverage-level cell: bold acronym + ⓘ tooltip trigger.
- * Every string is set via .textContent — no HTML injection possible.
- */
+function replaceChildren(container, ...children) { if (container) container.replaceChildren(...children); }
 function makeCovCell(level) {
   const wrapper = el('div', { cls: 'cov-cell' });
-  const code    = el('span', { text: level, attrs: { style: 'font-weight:600;color:var(--navy)' } });
+  const code = el('span', { text: level, attrs: { style: 'font-weight:600;color:var(--navy)' } });
   const tipWrap = el('span', { cls: 'cov-tip-wrap' });
-  const btn     = el('span', { cls: 'cov-info-btn', text: 'i', attrs: { tabindex: '0', 'aria-label': COV_DESCS[level] } });
-  const tip     = el('span', { cls: 'cov-tooltip', text: COV_DESCS[level], attrs: { role: 'tooltip' } });
-
-  tipWrap.appendChild(btn);
-  tipWrap.appendChild(tip);
-  wrapper.appendChild(code);
-  wrapper.appendChild(tipWrap);
+  const btn = el('span', { cls: 'cov-info-btn', text: 'i', attrs: { tabindex: '0', 'aria-label': COV_DESCS[level] } });
+  const tip = el('span', { cls: 'cov-tooltip', text: COV_DESCS[level], attrs: { role: 'tooltip' } });
+  tipWrap.appendChild(btn); tipWrap.appendChild(tip); wrapper.appendChild(code); wrapper.appendChild(tipWrap);
   return wrapper;
 }
-
-/**
- * Builds a small inline value-sign icon that references one of the hidden
- * SVG symbols defined at the top of index.html. `kind` must be 'no' (red,
- * Drake "No") or 'yes' (green, Drake "Yes"). The label text ("Negative Value"
- * / "Positive Value") is placed in a tooltip span that stays hidden until the
- * user hovers or focuses the icon.
- */
-const SVG_NS = 'http://www.w3.org/2000/svg';
-
-function makeValueIcon(kind) {
-  const label = kind === 'no' ? 'You Pay' : "You're Reimbursed";
-  const wrap  = el('span', {
-    cls: `value-icon value-${kind}`,
-    attrs: { tabindex: '0', role: 'img', 'aria-label': label },
-  });
-
-  const svg = document.createElementNS(SVG_NS, 'svg');
-  svg.setAttribute('viewBox', '0 0 48 48');
-  svg.setAttribute('aria-hidden', 'true');
-  svg.setAttribute('focusable', 'false');
-
-  const use = document.createElementNS(SVG_NS, 'use');
-  use.setAttribute('href', `#icon-drake-${kind}`);
-  svg.appendChild(use);
-
-  const tip = el('span', { cls: 'value-tip', text: label, attrs: { role: 'tooltip' } });
-
-  wrap.appendChild(svg);
-  wrap.appendChild(tip);
-  return wrap;
-}
-
-/** Builds a placeholder message node (emoji icon + descriptive text). */
 function makePlaceholder(icon, message) {
   const wrap = el('div', { cls: 'placeholder-msg' });
   wrap.appendChild(el('div', { cls: 'icon', text: icon }));
@@ -282,106 +205,90 @@ function makePlaceholder(icon, message) {
   return wrap;
 }
 
-
-/* ════════════════════════════════════════════════
-   CALCULATION HELPERS
-   ════════════════════════════════════════════════ */
-
-/** Returns UC contribution as a decimal (0–1), or null if ineligible. */
+/* calc */
 function calcUCPct(group, age, service) {
   if (group === 'group1') {
     if (isNaN(age) || isNaN(service)) return null;
     const svc = Math.floor(service);
     if (age < 50) return null;
-    if (age >= 55 && svc >= 5)  return 1.0;
+    if (age >= 55 && svc >= 5) return 1.0;
     if (age >= 50 && svc >= 10) return 1.0;
     return null;
   }
-
   if (group === 'group2') {
     const svc = Math.floor(service);
-
-    if (svc >= 10) {
-      return G2_SVC[Math.min(svc, 20)] ?? null;
-    }
-
-    if (age < 55) return null;
-    if (svc < 5) return null;
+    if (svc >= 10) return G2_SVC[Math.min(svc, 20)] ?? null;
+    if (age < 55 || svc < 5) return null;
     if ((age + svc) >= 75) return G2_SVC[10];
-
     return null;
   }
-
   if (group === 'group3') {
     if (service < 10 || age < 50) return null;
     const si = G3_SVCS.indexOf(Math.min(Math.floor(service), 20));
     const ai = G3_AGES.indexOf(Math.min(Math.floor(age), 65));
     return (si < 0 || ai < 0) ? null : G3_DATA[si][ai];
   }
-
   return null;
 }
-
 function ageIsRequired(group, service) {
   if (group === 'group1') return true;
   if (group === 'group2') return !isNaN(service) && Math.floor(service) < 10;
   if (group === 'group3') return true;
   return false;
 }
-
 function calcRow(plan, level, ucPct) {
   const data = RATES[`${plan} ${level}`];
   if (!data) return null;
-
   const [total, maxUC] = data;
-  const ucPays  = Math.min(total, parseFloat((ucPct * maxUC).toFixed(2)));
+  const ucPays = Math.min(total, parseFloat((ucPct * maxUC).toFixed(2)));
   const retiree = Math.max(0, parseFloat((total - ucPays).toFixed(2)));
   const persons = PARTB_PERSONS[level] ?? 0;
-
   let partB = null;
   if (persons > 0 && retiree === 0) {
     const overage = parseFloat((ucPct * maxUC - total).toFixed(2));
     if (overage > 0) partB = Math.min(overage, persons * PARTB_MAX);
   }
-
   return { total, maxUC, ucPays, retiree, partB };
 }
-
 function getActivePct() {
-  const ov = document.getElementById('override-pct').value;
+  const ovEl = document.getElementById('override-pct');
+  const ov = ovEl ? ovEl.value : '';
   if (ov !== '' && !isNaN(parseFloat(ov))) return parseFloat(ov) / 100;
 
-  const g = document.getElementById('group').value;
-  const s = parseFloat(document.getElementById('service').value);
-  const a = parseFloat(document.getElementById('age').value);
+  const gEl = document.getElementById('group');
+  const sEl = document.getElementById('service');
+  const aEl = document.getElementById('age');
+  if (!gEl || !sEl || !aEl) return null;
+
+  const g = gEl.value;
+  const s = parseFloat(sEl.value);
+  const a = parseFloat(aEl.value);
 
   if (!g || isNaN(s)) return null;
   if (g === 'group1') return !isNaN(a) ? calcUCPct(g, a, s) : null;
   if (g === 'group2' && Math.floor(s) >= 10) return calcUCPct(g, a, s);
   return !isNaN(a) ? calcUCPct(g, a, s) : null;
 }
+function fmt(v) { return '$' + v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+function pctStr(v) { return (v * 100).toFixed(2).replace(/\.?0+$/, '') + '%'; }
 
-function fmt(v) {
-  return '$' + v.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
-
-function pctStr(v) {
-  const pct = v * 100;
-  return pct.toFixed(2).replace(/\.?0+$/, '') + '%';
-}
-
-
-/* ════════════════════════════════════════════════
-   TAB 1 — PREMIUM ESTIMATOR
-   ════════════════════════════════════════════════ */
-
+/* renders */
 function renderEstimator() {
-  const g        = document.getElementById('group').value;
-  const s        = parseFloat(document.getElementById('service').value);
+  const gEl = document.getElementById('group');
+  const sEl = document.getElementById('service');
   const ageField = document.getElementById('age');
-  const ageHint  = document.getElementById('age-hint');
+  const ageHint = document.getElementById('age-hint');
+  const planEl = document.getElementById('plan');
+  const disp = document.getElementById('contrib-display');
+  const title = document.getElementById('results-title');
+  const area = document.getElementById('results-area');
 
+  if (!gEl || !sEl || !ageField || !ageHint || !planEl || !disp || !title || !area) return;
+
+  const g = gEl.value;
+  const s = parseFloat(sEl.value);
   const needAge = ageIsRequired(g, s);
+
   ageField.disabled = !needAge;
   ageField.style.opacity = needAge ? '1' : '0.45';
 
@@ -398,21 +305,18 @@ function renderEstimator() {
     ageHint.style.display = 'none';
   }
 
-  const plan  = document.getElementById('plan').value;
+  const plan = planEl.value;
   const ucPct = getActivePct();
-  const disp  = document.getElementById('contrib-display');
 
   if (ucPct === null) {
     disp.textContent = 'N/A';
-    disp.className   = 'contrib-value na';
+    disp.className = 'contrib-value na';
   } else {
     disp.textContent = pctStr(ucPct);
-    disp.className   = 'contrib-value';
+    disp.className = 'contrib-value';
   }
 
-  document.getElementById('results-title').textContent = plan || 'Premium Results';
-
-  const area = document.getElementById('results-area');
+  title.textContent = plan || 'Premium Results';
 
   if (!plan) {
     replaceChildren(area, makePlaceholder('📋', 'Select a plan to view premium estimates.'));
@@ -420,7 +324,6 @@ function renderEstimator() {
     renderVisionLegal();
     return;
   }
-
   if (ucPct === null) {
     replaceChildren(area, makePlaceholder('⚠️', 'Cannot calculate — check eligibility inputs or enter UC % manually.'));
     renderComparison();
@@ -430,18 +333,15 @@ function renderEstimator() {
 
   const table = document.createElement('table');
   const thead = document.createElement('thead');
-  const hdr   = document.createElement('tr');
-
-  ['Coverage Level', 'Total Premium', 'Max UC Contrib.', 'UC Pays', 'You Pay', 'Part B Reimb.'].forEach(text => {
-    hdr.appendChild(el('th', { text, attrs: { scope: 'col' } }));
-  });
+  const hdr = document.createElement('tr');
+  ['Coverage Level', 'Total Premium', 'Max UC Contrib.', 'UC Pays', 'You Pay', 'Part B Reimb.']
+    .forEach(text => hdr.appendChild(el('th', { text, attrs: { scope: 'col' } })));
   thead.appendChild(hdr);
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
-
   for (const lv of LEVELS) {
-    const r   = calcRow(plan, lv, ucPct);
+    const r = calcRow(plan, lv, ucPct);
     const row = document.createElement('tr');
 
     const firstTh = el('th', { cls: 'cov-head', attrs: { scope: 'row' } });
@@ -459,38 +359,25 @@ function renderEstimator() {
       row.appendChild(el('td', { cls: 'amount', text: fmt(r.total) }));
       row.appendChild(el('td', { cls: 'amount', text: fmt(r.maxUC) }));
       row.appendChild(el('td', { cls: 'amount uc-pays', text: fmt(r.ucPays) }));
-
-      const payTd = el('td', { cls: 'amount retiree-pays' });
-      payTd.appendChild(document.createTextNode(r.retiree <= 0 ? '$0.00' : fmt(r.retiree)));
-      row.appendChild(payTd);
-
+      row.appendChild(el('td', { cls: 'amount retiree-pays', text: r.retiree <= 0 ? '$0.00' : fmt(r.retiree) }));
       const isDash = !r.partB;
-      const partbTd = el('td', { cls: `amount partb${isDash ? ' partb-dash' : ''}` });
-      partbTd.appendChild(document.createTextNode(isDash ? '—' : fmt(r.partB)));
-      row.appendChild(partbTd);
+      row.appendChild(el('td', { cls: `amount partb${isDash ? ' partb-dash' : ''}`, text: isDash ? '—' : fmt(r.partB) }));
     }
-
     tbody.appendChild(row);
   }
-
   table.appendChild(tbody);
   replaceChildren(area, table);
+
   renderComparison();
   renderVisionLegal();
 }
 
-
-/* ════════════════════════════════════════════════
-   TAB 2 — PLAN COMPARISON
-   ════════════════════════════════════════════════ */
-
 function renderComparison() {
   const ucPct = getActivePct();
   const compLabel = document.getElementById('comp-pct-label');
-  if (compLabel) compLabel.textContent = ucPct !== null ? pctStr(ucPct) : '—';
-
   const tbody = document.getElementById('comp-tbody');
   if (!tbody) return;
+  if (compLabel) compLabel.textContent = ucPct !== null ? pctStr(ucPct) : '—';
 
   if (ucPct === null) {
     const row = document.createElement('tr');
@@ -504,7 +391,7 @@ function renderComparison() {
 
   const rows = LEVELS.map(lv => {
     const results = COMP_PLANS.map(p => calcRow(p, lv, ucPct));
-    const row     = document.createElement('tr');
+    const row = document.createElement('tr');
     if (!results.some(r => r !== null)) row.classList.add('na-row');
 
     const firstTh = el('th', { cls: 'cov-head', attrs: { scope: 'row' } });
@@ -516,85 +403,53 @@ function renderComparison() {
         row.appendChild(el('td', { cls: 'nav grp-sep', text: 'N/A' }));
         row.appendChild(el('td', { cls: 'nav', text: '—' }));
       } else {
-        row.appendChild(el('td', {
-          cls: r.retiree <= 0 ? 'net zero grp-sep' : 'net grp-sep',
-          text: r.retiree <= 0 ? '$0.00' : fmt(r.retiree),
-        }));
-
-        const pbvTd = el('td', { cls: 'pbv' });
-        pbvTd.appendChild(document.createTextNode(r.partB ? fmt(r.partB) : '—'));
-        if (r.partB) pbvTd.appendChild(makeValueIcon('yes'));
-        row.appendChild(pbvTd);
+        row.appendChild(el('td', { cls: r.retiree <= 0 ? 'net zero grp-sep' : 'net grp-sep', text: r.retiree <= 0 ? '$0.00' : fmt(r.retiree) }));
+        row.appendChild(el('td', { cls: 'pbv', text: r.partB ? fmt(r.partB) : '—' }));
       }
     }
-
     return row;
   });
 
   replaceChildren(tbody, ...rows);
 }
 
-
-/* ════════════════════════════════════════════════
-   TAB 3 — VISION, LEGAL PREMIUMS
-   ════════════════════════════════════════════════ */
-
 function renderVisionLegal() {
   const ucPct = getActivePct();
-  const pill  = document.getElementById('vl-pct-label');
+  const pill = document.getElementById('vl-pct-label');
   if (pill) pill.textContent = ucPct !== null ? pctStr(ucPct) : '—';
 }
 
+/* tabs/events */
+function showTab(tabId) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === tabId));
 
-/* ════════════════════════════════════════════════
-   TAB SWITCHING
-   ════════════════════════════════════════════════ */
-
-function initTabs() {
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-
-      btn.classList.add('active');
-      const target = document.getElementById(btn.dataset.tab);
-      if (target) target.classList.add('active');
-
-      // Force refresh when switching tabs so they never appear blank
-      if (btn.dataset.tab === 'tab-comparison') {
-        renderComparison();
-      } else if (btn.dataset.tab === 'tab-vl') {
-        renderVisionLegal();
-      } else if (btn.dataset.tab === 'tab-estimator') {
-        renderEstimator();
-      }
-    });
-  });
+  if (tabId === 'tab-comparison') renderComparison();
+  if (tabId === 'tab-vl') renderVisionLegal();
+  if (tabId === 'tab-estimator') renderEstimator();
 }
 
+function initTabs() {
+  const buttons = document.querySelectorAll('.tab-btn');
+  buttons.forEach(btn => btn.addEventListener('click', () => showTab(btn.dataset.tab)));
 
-/* ════════════════════════════════════════════════
-   EVENT WIRING
-   ════════════════════════════════════════════════ */
+  const active = document.querySelector('.tab-btn.active')?.dataset.tab || 'tab-estimator';
+  showTab(active);
+}
 
 function initEvents() {
   ['group', 'age', 'service', 'plan', 'override-pct'].forEach(id => {
     const node = document.getElementById(id);
     if (!node) return;
-    node.addEventListener('input',  () => { renderEstimator(); renderVisionLegal(); });
-    node.addEventListener('change', () => { renderEstimator(); renderVisionLegal(); });
+    node.addEventListener('input',  () => { renderEstimator(); });
+    node.addEventListener('change', () => { renderEstimator(); });
   });
 }
-
-
-/* ════════════════════════════════════════════════
-   INIT
-   ════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initEvents();
-  renderVisionLegal();
   renderEstimator();
-  renderComparison(); // ensure comparison is initialized
+  renderComparison();
+  renderVisionLegal();
 });
