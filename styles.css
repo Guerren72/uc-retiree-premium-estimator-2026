@@ -435,8 +435,9 @@ tbody tr > :first-child {
 }
 
 /* Medical Plan Comparison: non-zero NET PREMIUM values in red */
-.comp-tbl td.net.nonzero {
-  color: var(--red);
+.comp-tbl td.net { font-weight: 600; color: var(--navy); }
+.comp-tbl td.net.zero { color: var(--navy); }
+.comp-tbl td.net.nonzero { color: var(--red);
 }
 
 #tab-estimator .results-panel table {
