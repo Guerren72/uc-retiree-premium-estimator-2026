@@ -716,7 +716,7 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl thead tr:nth-child(2) th {
   background: var(--warm-gray);
   color: var(--text-muted);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
