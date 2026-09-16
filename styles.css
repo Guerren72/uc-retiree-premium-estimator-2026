@@ -271,7 +271,7 @@ input[type="number"]:disabled {
   font-weight: 600;
   color: var(--gold);
   min-width: 70px;
-  text-align: center;
+  text-align: right;
 }
 
 .contrib-value.na {
