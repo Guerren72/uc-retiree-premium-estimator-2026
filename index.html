@@ -38,6 +38,7 @@
 
 <div id="tab-estimator" class="tab-panel active">
   <div class="tab-inner">
+
     <div class="left-col">
 
       <div class="card">
@@ -51,45 +52,104 @@
               <label for="override-pct">UC Contribution (Optional)</label>
               <select id="override-pct">
                 <option value="">— Select % if known —</option>
-                <option value="100">100%</option><option value="95">95%</option><option value="90">90%</option>
-                <option value="85.5">85.5%</option><option value="85">85%</option><option value="81">81%</option>
-                <option value="80">80%</option><option value="76.5">76.5%</option><option value="76">76%</option>
-                <option value="75">75%</option><option value="72">72%</option><option value="70">70%</option>
-                <option value="68">68%</option><option value="67.5">67.5%</option><option value="66.5">66.5%</option>
-                <option value="65">65%</option><option value="64">64%</option><option value="63">63%</option>
-                <option value="60">60%</option><option value="59.5">59.5%</option><option value="58.5">58.5%</option>
-                <option value="57">57%</option><option value="56">56%</option><option value="55">55%</option>
-                <option value="54">54%</option><option value="52.5">52.5%</option><option value="52">52%</option>
-                <option value="51">51%</option><option value="50">50%</option><option value="49.5">49.5%</option>
-                <option value="49">49%</option><option value="48">48%</option><option value="47.5">47.5%</option>
-                <option value="45.5">45.5%</option><option value="45">45%</option><option value="44">44%</option>
-                <option value="42.5">42.5%</option><option value="42">42%</option><option value="40">40%</option>
-                <option value="39">39%</option><option value="38.5">38.5%</option><option value="38">38%</option>
-                <option value="37.5">37.5%</option><option value="36">36%</option><option value="35">35%</option>
-                <option value="34">34%</option><option value="33">33%</option><option value="32.5">32.5%</option>
-                <option value="32">32%</option><option value="30">30%</option><option value="28.5">28.5%</option>
-                <option value="28">28%</option><option value="27.5">27.5%</option><option value="27">27%</option>
-                <option value="26">26%</option><option value="25.5">25.5%</option><option value="25">25%</option>
-                <option value="24">24%</option><option value="22.5">22.5%</option><option value="22">22%</option>
-                <option value="21">21%</option><option value="20">20%</option><option value="19.5">19.5%</option>
-                <option value="19">19%</option><option value="18">18%</option><option value="17">17%</option>
-                <option value="16.5">16.5%</option><option value="16">16%</option><option value="15">15%</option>
-                <option value="14">14%</option><option value="13">13%</option><option value="12">12%</option>
-                <option value="11">11%</option><option value="10">10%</option><option value="9.5">9.5%</option>
-                <option value="9">9%</option><option value="8.5">8.5%</option><option value="8">8%</option>
-                <option value="7.5">7.5%</option><option value="7">7%</option><option value="6.5">6.5%</option>
-                <option value="6">6%</option><option value="5.5">5.5%</option><option value="5">5%</option>
+                <option value="100">100%</option>
+                <option value="95">95%</option>
+                <option value="90">90%</option>
+                <option value="85.5">85.5%</option>
+                <option value="85">85%</option>
+                <option value="81">81%</option>
+                <option value="80">80%</option>
+                <option value="76.5">76.5%</option>
+                <option value="76">76%</option>
+                <option value="75">75%</option>
+                <option value="72">72%</option>
+                <option value="70">70%</option>
+                <option value="68">68%</option>
+                <option value="67.5">67.5%</option>
+                <option value="66.5">66.5%</option>
+                <option value="65">65%</option>
+                <option value="64">64%</option>
+                <option value="63">63%</option>
+                <option value="60">60%</option>
+                <option value="59.5">59.5%</option>
+                <option value="58.5">58.5%</option>
+                <option value="57">57%</option>
+                <option value="56">56%</option>
+                <option value="55">55%</option>
+                <option value="54">54%</option>
+                <option value="52.5">52.5%</option>
+                <option value="52">52%</option>
+                <option value="51">51%</option>
+                <option value="50">50%</option>
+                <option value="49.5">49.5%</option>
+                <option value="49">49%</option>
+                <option value="48">48%</option>
+                <option value="47.5">47.5%</option>
+                <option value="45.5">45.5%</option>
+                <option value="45">45%</option>
+                <option value="44">44%</option>
+                <option value="42.5">42.5%</option>
+                <option value="42">42%</option>
+                <option value="40">40%</option>
+                <option value="39">39%</option>
+                <option value="38.5">38.5%</option>
+                <option value="38">38%</option>
+                <option value="37.5">37.5%</option>
+                <option value="36">36%</option>
+                <option value="35">35%</option>
+                <option value="34">34%</option>
+                <option value="33">33%</option>
+                <option value="32.5">32.5%</option>
+                <option value="32">32%</option>
+                <option value="30">30%</option>
+                <option value="28.5">28.5%</option>
+                <option value="28">28%</option>
+                <option value="27.5">27.5%</option>
+                <option value="27">27%</option>
+                <option value="26">26%</option>
+                <option value="25.5">25.5%</option>
+                <option value="25">25%</option>
+                <option value="24">24%</option>
+                <option value="22.5">22.5%</option>
+                <option value="22">22%</option>
+                <option value="21">21%</option>
+                <option value="20">20%</option>
+                <option value="19.5">19.5%</option>
+                <option value="19">19%</option>
+                <option value="18">18%</option>
+                <option value="17">17%</option>
+                <option value="16.5">16.5%</option>
+                <option value="16">16%</option>
+                <option value="15">15%</option>
+                <option value="14">14%</option>
+                <option value="13">13%</option>
+                <option value="12">12%</option>
+                <option value="11">11%</option>
+                <option value="10">10%</option>
+                <option value="9.5">9.5%</option>
+                <option value="9">9%</option>
+                <option value="8.5">8.5%</option>
+                <option value="8">8%</option>
+                <option value="7.5">7.5%</option>
+                <option value="7">7%</option>
+                <option value="6.5">6.5%</option>
+                <option value="6">6%</option>
+                <option value="5.5">5.5%</option>
+                <option value="5">5%</option>
                 <option value="0">0%</option>
               </select>
             </div>
             <span class="override-badge">Manual</span>
           </div>
-          <span class="hint">If you  know your UC contribution, enter it here; if not, proceed to step 1.</span>
+          <span class="hint">If you know your UC contribution, enter it here; if not, proceed to step 1.</span>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-header"><div class="step-badge">1</div><h2>Eligibility Group</h2></div>
+        <div class="card-header">
+          <div class="step-badge">1</div>
+          <h2>Eligibility Group</h2>
+        </div>
         <div class="card-body">
           <div class="field">
             <label for="group">When did the employee join UCRP?</label>
@@ -105,7 +165,10 @@
       </div>
 
       <div class="card">
-        <div class="card-header"><div class="step-badge">2</div><h2>Age &amp; Service</h2></div>
+        <div class="card-header">
+          <div class="step-badge">2</div>
+          <h2>Age &amp; Service</h2>
+        </div>
         <div class="card-body">
           <div class="field">
             <label for="age">Age at Retirement (whole years)</label>
@@ -120,18 +183,12 @@
         </div>
       </div>
 
-            <div class="card">
-        <div class="card-header"><div class="step-badge">3</div><h2>UC Contribution</h2></div>
-        <div class="card-body">
-          <div class="contrib-display">
-            <div><div class="contrib-label">Calculated UC %</div></div>
-            <div class="contrib-value na" id="contrib-display">—</div>
-          </div>
-        </div>
-      </div>
-
+      <!-- Step 4 remains in the left column -->
       <div class="card">
-        <div class="card-header"><div class="step-badge">4</div><h2>Plan Selection</h2></div>
+        <div class="card-header">
+          <div class="step-badge">4</div>
+          <h2>Plan Selection</h2>
+        </div>
         <div class="card-body">
           <div class="field">
             <label for="plan">Choose a Plan</label>
@@ -156,18 +213,42 @@
         </div>
       </div>
 
-    </div>
+    </div><!-- end .left-col -->
 
-     <div class="results-panel">
+    <div class="results-panel">
+
+      <!-- Step 3 appears above Premium Results -->
       <div class="card">
-        <div class="card-header"><h2 id="results-title">Premium Results</h2></div>
-        <div class="table-wrap" id="results-area">
-          <div class="placeholder-msg"><div class="icon">📋</div><p>Complete the form on the left to see premium estimates.</p></div>
+        <div class="card-header">
+          <div class="step-badge">3</div>
+          <h2>UC Contribution</h2>
+        </div>
+        <div class="card-body">
+          <div class="contrib-display">
+            <div>
+              <div class="contrib-label">Calculated UC %</div>
+            </div>
+            <div class="contrib-value na" id="contrib-display">—</div>
+          </div>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-header"><h2>Coverage Level Key</h2></div>
+        <div class="card-header">
+          <h2 id="results-title">Premium Results</h2>
+        </div>
+        <div class="table-wrap" id="results-area">
+          <div class="placeholder-msg">
+            <div class="icon">📋</div>
+            <p>Complete the form on the left to see premium estimates.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Coverage Level Key</h2>
+        </div>
         <div class="card-body">
           <div class="legend-grid">
             <div class="legend-item"><strong>U</strong> — Retiree only</div>
@@ -179,7 +260,9 @@
           </div>
         </div>
       </div>
-    </div>
+
+    </div><!-- end .results-panel -->
+
   </div>
 </div>
 
@@ -187,65 +270,82 @@
   <div class="tab-inner">
     <div class="comp-meta">
       <h2>2026 Medical Plan Comparison — Net Monthly Premiums</h2>
-      <div class="contrib-pill"><span>UC Contribution: </span><span id="comp-pct-label">—</span></div>
-      <span class="hint" style="font-style:normal;"> Set your eligibility inputs on the Medical, Dental Premiums tab to populate this chart.</span>
+      <div class="contrib-pill">
+        <span>UC Contribution: </span>
+        <span id="comp-pct-label">—</span>
+      </div>
+      <span class="hint" style="font-style:normal;">
+        Set your eligibility inputs on the Medical, Dental Premiums tab to populate this chart.
+      </span>
     </div>
 
     <div class="comp-wrap">
       <table class="comp-tbl">
         <thead>
-<tr>
-  <th scope="col" rowspan="2" style="text-align:left;vertical-align:middle;padding:11px 14px;">
-    Coverage<br>Level
-  </th>
-  <th scope="colgroup" colspan="2">
-    UC Blue &amp; Gold HMO /
-    <br>UC Medicare Choice
-    <br><span class="plan-badge">HMO / Medicare Advantage PPO</span>
-  </th>
-  <th scope="colgroup" colspan="2">
-    Kaiser Permanente /<br>Senior Advantage
-    <br><span class="plan-badge">HMO / Medicare Advantage HMO</span>
-  </th>
-  <th scope="colgroup" colspan="2">
-    HealthSavings+
-    <br><span class="plan-badge">PPO with HSA</span>
-  </th>
-  <th scope="colgroup" colspan="2">
-    UC Care /
-    <br>UC Medicare PPO
-    <br><span class="plan-badge">PPO / Medicare Supplement PPO</span>
-  </th>
-  <th scope="colgroup" colspan="2">
-    UC High Option
-    <br><span class="plan-badge">Medicare Supplement PPO</span>
-  </th>
-  <th scope="colgroup" colspan="2">
-    UC Medicare PPO
-    <br><span class="plan-badge">Medicare Supplement PPO</span>
-  </th>
-  <th scope="colgroup" colspan="2">
-    UC Medicare PPO<br>without Rx
-    <br><span class="plan-badge">Medicare Supplement PPO</span>
-  </th>
-  <th scope="colgroup" colspan="2">
-    UC Medicare Choice
-    <br><span class="plan-badge">Medicare Advantage PPO</span>
-  </th>
-</tr>
           <tr>
-            <th>Net Premium</th><th>Part B Reimb.</th>
-            <th>Net Premium</th><th>Part B Reimb.</th>
-            <th>Net Premium</th><th>Part B Reimb.</th>
-            <th>Net Premium</th><th>Part B Reimb.</th>
-            <th>Net Premium</th><th>Part B Reimb.</th>
-            <th>Net Premium</th><th>Part B Reimb.</th>
-            <th>Net Premium</th><th>Part B Reimb.</th>
-            <th>Net Premium</th><th>Part B Reimb.</th>
+            <th scope="col" rowspan="2" style="text-align:left;vertical-align:middle;padding:11px 14px;">
+              Coverage<br>Level
+            </th>
+            <th scope="colgroup" colspan="2">
+              UC Blue &amp; Gold HMO /
+              <br>UC Medicare Choice
+              <br><span class="plan-badge">HMO / Medicare Advantage PPO</span>
+            </th>
+            <th scope="colgroup" colspan="2">
+              Kaiser Permanente /<br>Senior Advantage
+              <br><span class="plan-badge">HMO / Medicare Advantage HMO</span>
+            </th>
+            <th scope="colgroup" colspan="2">
+              HealthSavings+
+              <br><span class="plan-badge">PPO with HSA</span>
+            </th>
+            <th scope="colgroup" colspan="2">
+              UC Care /
+              <br>UC Medicare PPO
+              <br><span class="plan-badge">PPO / Medicare Supplement PPO</span>
+            </th>
+            <th scope="colgroup" colspan="2">
+              UC High Option
+              <br><span class="plan-badge">Medicare Supplement PPO</span>
+            </th>
+            <th scope="colgroup" colspan="2">
+              UC Medicare PPO
+              <br><span class="plan-badge">Medicare Supplement PPO</span>
+            </th>
+            <th scope="colgroup" colspan="2">
+              UC Medicare PPO<br>without Rx
+              <br><span class="plan-badge">Medicare Supplement PPO</span>
+            </th>
+            <th scope="colgroup" colspan="2">
+              UC Medicare Choice
+              <br><span class="plan-badge">Medicare Advantage PPO</span>
+            </th>
+          </tr>
+          <tr>
+            <th>Net Premium</th>
+            <th>Part B Reimb.</th>
+            <th>Net Premium</th>
+            <th>Part B Reimb.</th>
+            <th>Net Premium</th>
+            <th>Part B Reimb.</th>
+            <th>Net Premium</th>
+            <th>Part B Reimb.</th>
+            <th>Net Premium</th>
+            <th>Part B Reimb.</th>
+            <th>Net Premium</th>
+            <th>Part B Reimb.</th>
+            <th>Net Premium</th>
+            <th>Part B Reimb.</th>
+            <th>Net Premium</th>
+            <th>Part B Reimb.</th>
           </tr>
         </thead>
         <tbody id="comp-tbody">
-          <tr><td colspan="17" style="padding:32px;text-align:center;color:var(--text-muted);font-size:13px;">Set your eligibility inputs on the Medical, Dental Premiums tab to populate this chart.</td></tr>
+          <tr>
+            <td colspan="17" style="padding:32px;text-align:center;color:var(--text-muted);font-size:13px;">
+              Set your eligibility inputs on the Medical, Dental Premiums tab to populate this chart.
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -256,21 +356,36 @@
   <div class="tab-inner">
     <div class="comp-meta">
       <h2>2026 Vision &amp; Legal Plan Premiums</h2>
-      <div class="contrib-pill"><span>UC Contribution: </span><span id="vl-pct-label">—</span></div>
-      <span class="hint" style="font-style:normal;">← Set eligibility inputs on the Medical, Dental Premiums tab to update.</span>
+      <div class="contrib-pill">
+        <span>UC Contribution: </span>
+        <span id="vl-pct-label">—</span>
+      </div>
+      <span class="hint" style="font-style:normal;">
+        ← Set eligibility inputs on the Medical, Dental Premiums tab to update.
+      </span>
     </div>
 
     <div class="card">
-      <div class="card-header"><h2>Vision Plan</h2></div>
+      <div class="card-header">
+        <h2>Vision Plan</h2>
+      </div>
       <div class="table-wrap" id="vision-area">
-        <div class="placeholder-msg"><div class="icon">👓</div><p>Vision plan premium rates will appear here.</p></div>
+        <div class="placeholder-msg">
+          <div class="icon">👓</div>
+          <p>Vision plan premium rates will appear here.</p>
+        </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-header"><h2>Legal Plan</h2></div>
+      <div class="card-header">
+        <h2>Legal Plan</h2>
+      </div>
       <div class="table-wrap" id="legal-area">
-        <div class="placeholder-msg"><div class="icon">⚖️</div><p>Legal plan premium rates will appear here.</p></div>
+        <div class="placeholder-msg">
+          <div class="icon">⚖️</div>
+          <p>Legal plan premium rates will appear here.</p>
+        </div>
       </div>
     </div>
   </div>
