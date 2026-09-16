@@ -318,7 +318,7 @@ input[type="number"]:disabled {
 
 /* Narrow the UC Contribution card in the results column */
 .results-panel .contrib-card {
-  width: 50%;
+  width: 66%;
 }
 
 /* ── Results table ────────────────────────────── */
