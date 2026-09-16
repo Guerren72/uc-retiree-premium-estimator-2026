@@ -447,6 +447,19 @@ tbody tr > :first-child {
   white-space: nowrap;
 }
 
+/* ── Disclaimer body text ─────────────────────── */
+.disclaimer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.disclaimer-text p {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 /* Medical Plan Comparison: non-zero NET PREMIUM values in red */
 .comp-tbl td.net { font-weight: 600; color: var(--navy); }
 .comp-tbl td.net.zero { color: var(--navy); }
