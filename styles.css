@@ -175,6 +175,15 @@ header h1 span {
   gap: 14px;
 }
 
+#override-pct {
+  text-align: center;
+  text-align-last: center;
+}
+
+#override-pct option {
+  text-align: center;
+}
+
 /* ── Form fields ──────────────────────────────── */
 .field {
   display: flex;
