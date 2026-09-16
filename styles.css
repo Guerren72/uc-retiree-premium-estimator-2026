@@ -650,6 +650,12 @@ tr:not(.na-row) .cov-info-btn {
   color: var(--navy);
 }
 
+/* Match the Medical Plan Comparison table width */
+#tab-comparison .comparison-disclaimer {
+  width: 100%;
+  align-self: stretch;
+}
+
 /* ── Placeholder ──────────────────────────────── */
 .placeholder-msg {
   padding: 44px 24px;
