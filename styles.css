@@ -316,6 +316,11 @@ input[type="number"]:disabled {
   gap: 18px;
 }
 
+/* Narrow the UC Contribution card in the results column */
+.results-panel .contrib-card {
+  width: 50%;
+}
+
 /* ── Results table ────────────────────────────── */
 .table-wrap {
   overflow-x: auto;
