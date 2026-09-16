@@ -272,25 +272,29 @@ input[type="number"]:disabled {
 
 /* ── Override row ─────────────────────────────── */
 .override-row {
+  --override-control-offset: calc(11.5px * 1.6 + 5px);
   display: flex;
   gap: 10px;
-  align-items: flex-end;
+  align-items: stretch;
 }
 
 .override-row .field {
   flex: 1;
+  min-width: 0;
 }
 
 .override-badge {
   background: var(--gold-light);
   color: var(--navy);
   border-radius: 4px;
-  padding: 2px 8px;
+  padding: 0 8px;
   font-size: 11px;
   font-weight: 600;
   white-space: nowrap;
-  align-self: center;
-  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--override-control-offset);
 }
 
 /* ── Tab 1: Estimator layout ──────────────────── */
@@ -1055,4 +1059,3 @@ tr:not(.na-row) .cov-info-btn {
   width: 100%;
   text-align: right;
 }
-
