@@ -1000,6 +1000,15 @@ tr:not(.na-row) .cov-info-btn {
     width: auto;
     padding: 20px 16px 48px;
   }
+
+  #tab-vl .tab-inner {
+    flex-direction: column;
+  }
+
+  #tab-vl .card {
+    width: 100%;
+    flex: none;
+  }
 }
 
 /* Guerren Darken the right border of the first column (Coverage Level) */
