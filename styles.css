@@ -323,6 +323,7 @@ input[type="number"]:disabled {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  text-align: center;
 }
 
 /* Narrow the UC Contribution card in the results column */
