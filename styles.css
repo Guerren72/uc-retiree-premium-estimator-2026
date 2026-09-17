@@ -1161,3 +1161,25 @@ tr:not(.na-row) .cov-info-btn {
   text-align: right;
 }
 
+/* --- Vision & Legal Tab Layout --- */
+
+/* Targets the layout container inside the Vision/Legal tab panel */
+#tab-vl .tab-inner {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;              /* Spacing between the Vision and Legal cards */
+  align-items: flex-start; /* Keeps them aligned at the top if heights vary */
+}
+
+/* Forces both cards to occupy equal horizontal widths */
+#tab-vl .tab-inner .card {
+  flex: 1;
+  min-width: 280px;       /* Safeguards cards from shrinking too much */
+}
+
+/* Responsive breakpoint: Stacks cards vertically on smaller mobile views */
+@media (max-width: 768px) {
+  #tab-vl .tab-inner {
+    flex-direction: column;
+  }
+}
