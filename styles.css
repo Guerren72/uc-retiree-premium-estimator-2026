@@ -328,7 +328,6 @@ input[type="number"]:disabled {
 /* Narrow the UC Contribution card in the results column */
 .results-panel .contrib-card {
   width: 50%;
-  text-align: center;
 }
 
 /* ── Results table ────────────────────────────── */
@@ -703,7 +702,7 @@ tr:not(.na-row) .cov-info-btn {
   color: var(--gold);
   border-radius: 20px;
   padding: 5px 16px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
 }
 
