@@ -141,6 +141,7 @@ const COV_DESCS = {
 const PARTB_PERSONS = { M: 1, MM: 2, MC: 1, MA: 1, MAC: 1, MMM: 3, MMC: 2 };
 const PARTB_MAX = 185;
 const LEVELS = ['U', 'UC', 'UA', 'UAC', 'M', 'MM', 'MC', 'MA', 'MAC', 'MMM', 'MMC'];
+const VL_LEVELS = ['U', 'UC', 'UA', 'UAC'];
 
 const G2_SVC = {
   10: 0.50, 11: 0.55, 12: 0.60, 13: 0.65, 14: 0.70,
@@ -432,7 +433,7 @@ function renderComparison() {
     const results = COMP_PLANS.map(p => calcRow(p, lv, ucPct));
     const row = document.createElement('tr');
     if (!results.some(r => r !== null)) row.classList.add('na-row');
-     
+
     const firstTh = el('th', { cls: 'cov-head', attrs: { scope: 'row' } });
     firstTh.appendChild(makeCovCell(lv));
     row.appendChild(firstTh);
@@ -442,11 +443,11 @@ function renderComparison() {
         row.appendChild(el('td', { cls: 'nav grp-sep', text: 'N/A' }));
         row.appendChild(el('td', { cls: 'nav', text: '—' }));
       } else {
-const isZero = r.retiree <= 0;
-row.appendChild(el('td', {
-  cls: `net ${isZero ? 'zero' : 'nonzero'} grp-sep`,
-  text: isZero ? '$0.00' : fmt(r.retiree),
-}));
+        const isZero = r.retiree <= 0;
+        row.appendChild(el('td', {
+          cls: `net ${isZero ? 'zero' : 'nonzero'} grp-sep`,
+          text: isZero ? '$0.00' : fmt(r.retiree),
+        }));
         row.appendChild(el('td', { cls: 'pbv', text: r.partB ? fmt(r.partB) : '—' }));
       }
     }
@@ -457,10 +458,29 @@ row.appendChild(el('td', {
   replaceChildren(tbody, ...rows);
 }
 
+function renderCoverageTable(tbodyId, premiums) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+
+  const rows = VL_LEVELS.map((level, index) => {
+    const row = document.createElement('tr');
+    const coverage = el('th', { cls: 'cov-head', attrs: { scope: 'row' } });
+    coverage.appendChild(makeCovCell(level));
+    row.appendChild(coverage);
+    row.appendChild(el('td', { text: premiums[index] }));
+    return row;
+  });
+
+  replaceChildren(tbody, ...rows);
+}
+
 function renderVisionLegal() {
   const ucPct = getActivePct();
   const pill = document.getElementById('vl-pct-label');
   if (pill) pill.textContent = ucPct !== null ? pctStr(ucPct) : '—';
+
+  renderCoverageTable('vision-tbody', ['$12.43', '$23.73', '$23.52', '$29.05']);
+  renderCoverageTable('legal-tbody', ['$11.59', '$13.95', '$13.95', '$16.31']);
 }
 
 /* tabs/events */
