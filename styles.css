@@ -479,7 +479,7 @@ tbody tr > :first-child {
 }
 
 .comparison-notes .disclaimer-text li {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-muted);
   line-height: 1.45;
 }
