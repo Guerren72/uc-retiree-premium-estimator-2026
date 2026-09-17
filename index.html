@@ -573,13 +573,15 @@
 
 <!-- Vision, Legal Premiums tab -->
 <div id="tab-vl" class="tab-panel">
-  <div class="tab-inner"> <!-- ADD THIS LINE -->
+  <div class="tab-inner">
 
-    <!-- Your Vision Card Element -->
-    <div class="table-wrap" id="vision-area">
-          <div class="card-header">
+    <!-- Vision Service Plan card -->
+    <div class="card">
+      <div class="card-header">
         <h2>Vision Service Plan</h2>
       </div>
+
+      <div class="table-wrap" id="vision-area">
         <table>
           <thead>
             <tr>
@@ -587,6 +589,7 @@
               <th scope="col">Monthly Premium</th>
             </tr>
           </thead>
+
           <tbody>
             <tr>
               <th scope="row">U</th>
@@ -605,9 +608,17 @@
               <td>$29.05</td>
             </tr>
           </tbody>
-     </div>
+        </table>
+      </div>
+    </div>
 
-    <!-- Your Legal Card Element -->
+    <!-- ARAG Legal card -->
+    <div class="card">
+      <div class="card-header">
+        <h2>ARAG Legal</h2>
+      </div>
+
+      <div class="table-wrap" id="legal-area">
         <table>
           <thead>
             <tr>
@@ -615,6 +626,7 @@
               <th scope="col">ARAG Legal</th>
             </tr>
           </thead>
+
           <tbody>
             <tr>
               <th scope="row">U</th>
@@ -634,9 +646,10 @@
             </tr>
           </tbody>
         </table>
+      </div>
     </div>
 
-  </div> <!-- ADD THIS LINE -->
+  </div>
 </div>
 
 <script src="app.js"></script>
