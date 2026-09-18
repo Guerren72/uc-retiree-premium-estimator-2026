@@ -67,7 +67,7 @@ header::after {
 }
 
 header h1 {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 24px;
   font-weight: 500;
   color: white;
@@ -78,7 +78,7 @@ header h1 span {
   color: var(--gold);
   display: block;
   font-size: 18px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   font-weight: 400;
   letter-spacing: 0.04em;
   margin-bottom: 3px;
