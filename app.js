@@ -365,7 +365,7 @@ function renderEstimator() {
   const thead = document.createElement('thead');
   const hdr = document.createElement('tr');
 
-  ['Coverage Level', 'Total Premium', 'Max UC Contrib.', 'UC Pays', 'You Pay', 'Part B Reimb.']
+  ['Coverage Level', 'Monthly Premium', 'Max UC Contrib.', 'UC Pays', 'You Pay', 'Part B Reimb.']
     .forEach(text => hdr.appendChild(el('th', { text, attrs: { scope: 'col' } })));
 
   thead.appendChild(hdr);
