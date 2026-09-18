@@ -67,7 +67,7 @@ header::after {
 }
 
 header h1 {
-  font-family: 'Roboto', serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 24px;
   font-weight: 500;
   color: white;
