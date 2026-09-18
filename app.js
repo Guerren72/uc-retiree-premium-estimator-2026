@@ -165,14 +165,14 @@ const G3_DATA = [
 ];
 
 const COMP_PLANS = [
-  "UC Blue & Gold HMO/UC Medicare Choice",
-  "Kaiser Permanente/Senior Advantage HMO",
-  "HealthSavings+",
-  "UC Care PPO/UC Medicare PPO",
-  "UC High Option PPO",
-  "UC Medicare PPO",
-  "UC Medicare PPO without Rx",
-  "UC Medicare Choice",
+  "UC Blue & Gold HMO/UC Medicare Choice &mdash; Monthly Premiums",
+  "Kaiser Permanente/Senior Advantage HMO &mdash; Monthly Premiums",
+  "HealthSavings+ &mdash; Monthly Premiums",
+  "UC Care PPO/UC Medicare PPO &mdash; Monthly Premiums",
+  "UC High Option PPO &mdash; Monthly Premiums",
+  "UC Medicare PPO &mdash; Monthly Premiums",
+  "UC Medicare PPO without Rx &mdash; Monthly Premiums",
+  "UC Medicare Choice &mdash; Monthly Premiums",
 ];
 
 /* helpers */
