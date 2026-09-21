@@ -543,8 +543,8 @@ function printMedicalPlanComparison() {
   showTab('tab-comparison');
   renderComparison();
 
-  window.print();
   queueRestoreTabFallback();
+  window.print();
 }
 
 function initTabs() {
