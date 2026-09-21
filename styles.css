@@ -1141,40 +1141,16 @@ tr:not(.na-row) .cov-info-btn {
   }
 }
 
-/* ── Enhanced Medical Plan Column Dividers ── */
+/* ── Clean Navy Plan Dividers (Rows Below Subheaders) ── */
 
-/* 1. Darken the header borders between plan columns */
-.comp-tbl thead tr:first-child th {
-  border-right: 2px solid var(--text) !important;
-}
-.comp-tbl thead tr:first-child th:first-child {
-  border-right: 2px solid var(--text) !important;
-}
-
-/* 2. Darken the subheader (Net Premium / Part B) right borders for every plan group */
-.comp-tbl thead tr:nth-child(2) th:nth-child(2n) {
-  border-right: 2px solid var(--text) !important;
-}
-/* Ensure the first Coverage Level subheader cell matches */
-.comp-tbl thead tr:nth-child(2) th:first-child {
-  border-right: 2px solid var(--text) !important;
-}
-
-/* 3. Darken the vertical borders in the table body down through all rows */
-/* Right border of the row header (Coverage Level) */
+/* 1. Darken the right border of the first column (Coverage Level) to separate it from the first plan */
 .comp-tbl tbody tr > :first-child, 
 .comp-tbl tbody th[scope="row"] {
-  border-right: 2px solid var(--text) !important;
+  border-right: 2px solid var(--navy) !important;
 }
 
-/* Right border of every "Part B Reimb." column to separate the plans */
-.comp-tbl td:nth-child(2n) {
-  border-right: 2px solid var(--text) !important;
+/* 2. Darken the right border of every Part B column to separate the plan blocks from each other */
+.comp-tbl tbody td:nth-child(2n) {
+  border-right: 2px solid var(--navy) !important;
 }
 
-/* Optional: If you want a subtle distinct separator between the Net Premium 
-   and Part B Reimb. inside the SAME plan, you can slightly darken it from 
-   the faint default warm-gray to your variable border color */
-.comp-tbl td:nth-child(2n+1) {
-  border-right: 2px solid var(--border) !important;
-}
