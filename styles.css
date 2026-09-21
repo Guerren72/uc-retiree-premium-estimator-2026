@@ -1147,4 +1147,10 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl tbody td:nth-child(2n+1) {
   border-left: 2px solid #888888 !important; /* Mid-gray color */
 }
+/* ── Warm-Gray Left Border for Part B Reimb. Columns ── */
+
+/* Targets the left border of every Part B Reimb. data cell in the table body */
+.comp-tbl tbody td:nth-child(2n) {
+  border-left: 1px solid var(--warm-gray) !important;
+}
 
