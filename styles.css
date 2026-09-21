@@ -59,7 +59,7 @@ header::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Segoe UI', serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: var(--navy);
@@ -149,7 +149,7 @@ header h1 span {
 }
 
 .card-header h2 {
-  font-family: 'Segoe UI', serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 17px;
   font-weight: 500;
 }
@@ -268,7 +268,7 @@ input[type="number"]:disabled {
 
 .contrib-value {
   grid-column: 2;
-  font-family: 'Segoe UI', serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: var(--gold);
@@ -715,7 +715,7 @@ tr:not(.na-row) .cov-info-btn {
 }
 
 .comp-meta h2 {
-  font-family: 'Segoe UI', serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 20px;
   font-weight: 500;
   color: var(--navy);
@@ -778,7 +778,7 @@ tr:not(.na-row) .cov-info-btn {
   background: var(--navy);
   color: white;
   padding: 11px 10px;
-  font-family: 'Segoe UI', serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 13px;
   font-weight: 600;
   text-align: center;
@@ -881,7 +881,7 @@ tr:not(.na-row) .cov-info-btn {
 }
 
 .g3-intro h3 {
-  font-family: 'Segoe UI', serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 18px;
   font-weight: 500;
   color: var(--navy);
