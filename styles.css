@@ -1141,15 +1141,15 @@ tr:not(.na-row) .cov-info-btn {
   }
 }
 
-/* ── Clean Navy Plan Dividers (Rows Below Subheaders) ── */
+/* ── Shifted Navy Plan Dividers ── */
 
-/* 1. Darken the right border of the first column (Coverage Level) to separate it from the first plan */
+/* 1. Clear the border on the first column so it doesn't duplicate */
 .comp-tbl tbody tr > :first-child, 
 .comp-tbl tbody th[scope="row"] {
-  border-right: 2px solid var(--navy) !important;
+  border-right: 2px solid var(--warm-gray) !important;
 }
 
-/* 2. Darken the right border of every Part B column to separate the plan blocks from each other */
+/* 2. Darken the right border of every Net Premium column to frame the plans correctly */
 .comp-tbl tbody td:nth-child(2n) {
   border-right: 2px solid var(--navy) !important;
 }
