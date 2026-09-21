@@ -522,10 +522,36 @@ function restoreTabAfterPrint() {
 }
 
 function queueRestoreTabFallback() {
-  const tryRestore = () => {
-    if (!restoreTabAfterPrintId) return;
+  const startedAt = Date.now();
+  let sawPrintFocusChange = false;
 
-    if (document.visibilityState === 'visible' && document.hasFocus()) {
+  const markPrintFocusChange = () => {
+    if (document.visibilityState === 'hidden' || !document.hasFocus()) {
+      sawPrintFocusChange = true;
+    }
+  };
+
+  const clearListeners = () => {
+    document.removeEventListener('visibilitychange', markPrintFocusChange);
+    window.removeEventListener('blur', markPrintFocusChange);
+  };
+
+  document.addEventListener('visibilitychange', markPrintFocusChange);
+  window.addEventListener('blur', markPrintFocusChange);
+  markPrintFocusChange();
+
+  const tryRestore = () => {
+    if (!restoreTabAfterPrintId) {
+      clearListeners();
+      return;
+    }
+
+    const hardTimeoutReached = (Date.now() - startedAt) >= 15000;
+    const focusRestoredAfterPrint =
+      sawPrintFocusChange && document.visibilityState === 'visible' && document.hasFocus();
+
+    if (focusRestoredAfterPrint || hardTimeoutReached) {
+      clearListeners();
       restoreTabAfterPrint();
       return;
     }
