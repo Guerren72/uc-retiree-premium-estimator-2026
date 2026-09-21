@@ -484,6 +484,16 @@ function renderVisionLegal() {
 }
 
 /* tabs/events */
+let restoreTabAfterPrintId = null;
+let restoreTabFallbackTimer = null;
+let restoreTabFallbackCleanup = null;
+
+function getActiveTabId() {
+  return document.querySelector('.tab-btn.active')?.dataset.tab
+    || document.querySelector('.tab-panel.active')?.id
+    || 'tab-estimator';
+}
+
 function showTab(tabId) {
   document.querySelectorAll('.tab-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.tab === tabId);
@@ -495,6 +505,87 @@ function showTab(tabId) {
   if (tabId === 'tab-estimator') renderEstimator();
   if (tabId === 'tab-comparison') renderComparison();
   if (tabId === 'tab-vl') renderVisionLegal();
+}
+
+function clearPrintRestoreFallbackState() {
+  if (restoreTabFallbackTimer !== null) {
+    clearTimeout(restoreTabFallbackTimer);
+    restoreTabFallbackTimer = null;
+  }
+
+  if (restoreTabFallbackCleanup) {
+    restoreTabFallbackCleanup();
+    restoreTabFallbackCleanup = null;
+  }
+}
+
+function restoreTabAfterPrint() {
+  clearPrintRestoreFallbackState();
+
+  if (!restoreTabAfterPrintId || restoreTabAfterPrintId === 'tab-comparison') {
+    restoreTabAfterPrintId = null;
+    return;
+  }
+
+  showTab(restoreTabAfterPrintId);
+  restoreTabAfterPrintId = null;
+}
+
+function queueRestoreTabFallback() {
+  clearPrintRestoreFallbackState();
+
+  const startedAt = Date.now();
+  let sawPrintFocusChange = false;
+
+  const markPrintFocusChange = () => {
+    if (document.visibilityState === 'hidden' || !document.hasFocus()) {
+      sawPrintFocusChange = true;
+    }
+  };
+
+  const clearListeners = () => {
+    document.removeEventListener('visibilitychange', markPrintFocusChange);
+    window.removeEventListener('blur', markPrintFocusChange);
+  };
+  restoreTabFallbackCleanup = clearListeners;
+
+  document.addEventListener('visibilitychange', markPrintFocusChange);
+  window.addEventListener('blur', markPrintFocusChange);
+  markPrintFocusChange();
+
+  const tryRestore = () => {
+    if (!restoreTabAfterPrintId) {
+      clearListeners();
+      return;
+    }
+
+    const hardTimeoutReached = (Date.now() - startedAt) >= 15000;
+    const focusRestoredAfterPrint =
+      sawPrintFocusChange && document.visibilityState === 'visible' && document.hasFocus();
+
+    if (focusRestoredAfterPrint || hardTimeoutReached) {
+      clearListeners();
+      restoreTabAfterPrint();
+      return;
+    }
+
+    restoreTabFallbackTimer = setTimeout(tryRestore, 500);
+  };
+
+  restoreTabFallbackTimer = setTimeout(tryRestore, 1000);
+}
+
+function printMedicalPlanComparison() {
+  clearPrintRestoreFallbackState();
+
+  const activeTabId = getActiveTabId();
+  restoreTabAfterPrintId = activeTabId !== 'tab-comparison' ? activeTabId : null;
+
+  showTab('tab-comparison');
+  renderComparison();
+
+  window.print();
+  queueRestoreTabFallback();
 }
 
 function initTabs() {
@@ -514,6 +605,13 @@ function initEvents() {
     node.addEventListener('input', () => renderEstimator());
     node.addEventListener('change', () => renderEstimator());
   });
+
+  const printBtn = document.getElementById('print-comparison-btn');
+  if (printBtn) {
+    printBtn.addEventListener('click', printMedicalPlanComparison);
+  }
+
+  window.addEventListener('afterprint', restoreTabAfterPrint);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
