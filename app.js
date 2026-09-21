@@ -522,6 +522,7 @@ function restoreTabAfterPrint() {
 }
 
 function printMedicalPlanComparison() {
+  const supportsAfterPrint = 'onafterprint' in window;
   const activeTabId = getActiveTabId();
   restoreTabAfterPrintId = activeTabId !== 'tab-comparison' ? activeTabId : null;
 
@@ -530,9 +531,11 @@ function printMedicalPlanComparison() {
 
   window.print();
 
-  restoreTabFallbackTimer = setTimeout(() => {
-    restoreTabAfterPrint();
-  }, 1000);
+  if (!supportsAfterPrint) {
+    restoreTabFallbackTimer = setTimeout(() => {
+      restoreTabAfterPrint();
+    }, 1000);
+  }
 }
 
 function initTabs() {
@@ -558,7 +561,9 @@ function initEvents() {
     printBtn.addEventListener('click', printMedicalPlanComparison);
   }
 
-  window.addEventListener('afterprint', restoreTabAfterPrint);
+  if ('onafterprint' in window) {
+    window.addEventListener('afterprint', restoreTabAfterPrint);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
