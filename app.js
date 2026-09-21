@@ -584,8 +584,8 @@ function printMedicalPlanComparison() {
   showTab('tab-comparison');
   renderComparison();
 
-  queueRestoreTabFallback();
   window.print();
+  queueRestoreTabFallback();
 }
 
 function initTabs() {
