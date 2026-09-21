@@ -1314,7 +1314,47 @@ tr:not(.na-row) .cov-info-btn {
     print-color-adjust: exact !important;
   }
 }
+  /* ... existing rules above unchanged ... */
 
+  /* Plan-name header row: shrink further, allow tight wrapping */
+  .comp-tbl thead tr:first-child th {
+    font-size: 6.5pt;
+    padding: 6px 2px;
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: 0;
+    white-space: normal;      /* allow wrapping instead of overflow */
+    word-break: break-word;
+    hyphens: auto;
+    vertical-align: bottom;
+  }
+
+  .comp-tbl thead tr:first-child th:first-child {
+    font-size: 8pt;
+    padding: 6px 4px !important;
+  }
+
+  .plan-badge {
+    font-size: 5.5pt;
+    padding: 0 2px;
+    margin-top: 1px;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  /* Sub-header row (Net Premium / Part B Reimb.) */
+  .comp-tbl thead tr:nth-child(2) th {
+    font-size: 6pt;
+    padding: 4px 1px;
+    letter-spacing: 0;
+    white-space: normal;      /* was nowrap — let "Part B Reimb." wrap if needed */
+    line-height: 1.15;
+  }
+
+  .comp-tbl thead tr:nth-child(2) th:first-child {
+    font-size: 6.5pt;
+  }
+}
 /* ── Tab 3: Vision & Legal Layout ──────────────── */
 #tab-vl .tab-inner {
   max-width: 1100px;
