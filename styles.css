@@ -1178,6 +1178,145 @@ tr:not(.na-row) .cov-info-btn {
   text-align: right;
 }
 
+/* ── Print: Medical Plan Comparison ─────────────────
+   Makes the comparison tab printable with all columns visible.
+   Best results: browser print dialog → Landscape, margins: Minimum/None.
+*/
+@media print {
+  @page {
+    size: landscape;
+    margin: 0.25in;
+  }
+
+  html,
+  body {
+    background: white !important;
+    color: #000 !important;
+    font-size: 9px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide app chrome/navigation in print */
+  header,
+  .tab-bar {
+    display: none !important;
+  }
+
+  /* Print only the active tab; when Medical Plan Comparison is active,
+     it gets the whole printed page width. */
+  .tab-panel {
+    display: none !important;
+  }
+
+  .tab-panel.active {
+    display: block !important;
+  }
+
+  #tab-comparison .tab-inner {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    gap: 8px !important;
+  }
+
+  #tab-comparison .comp-meta {
+    gap: 8px !important;
+    margin-bottom: 4px !important;
+  }
+
+  #tab-comparison .comp-meta h2 {
+    font-size: 13px !important;
+  }
+
+  #tab-comparison .contrib-pill {
+    font-size: 11px !important;
+    padding: 2px 8px !important;
+  }
+
+  /* Critical: remove scroll container behavior for print */
+  #tab-comparison .comp-wrap {
+    overflow: visible !important;
+    width: 100% !important;
+    border: 1px solid #999 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  #tab-comparison .comp-tbl {
+    width: 100% !important;
+    table-layout: fixed !important;
+    font-size: 7.5px !important;
+    page-break-inside: auto;
+  }
+
+  #tab-comparison .comp-tbl thead {
+    display: table-header-group;
+  }
+
+  #tab-comparison .comp-tbl tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  #tab-comparison .comp-tbl thead tr:first-child th {
+    font-size: 7.5px !important;
+    padding: 4px 3px !important;
+    line-height: 1.1 !important;
+    white-space: normal !important;
+  }
+
+  #tab-comparison .comp-tbl thead tr:nth-child(2) th {
+    font-size: 6.5px !important;
+    padding: 3px 2px !important;
+    letter-spacing: 0 !important;
+    white-space: normal !important;
+  }
+
+  #tab-comparison .comp-tbl td,
+  #tab-comparison .comp-tbl tbody th {
+    font-size: 7px !important;
+    padding: 3px 2px !important;
+    line-height: 1.15 !important;
+    white-space: normal !important;
+  }
+
+  /* Keep the first column readable, but let the other columns compress */
+  #tab-comparison .comp-tbl thead tr:first-child th:first-child,
+  #tab-comparison .comp-tbl thead tr:nth-child(2) th:first-child,
+  #tab-comparison .comp-tbl tbody th[scope="row"],
+  #tab-comparison .comp-tbl tbody tr > :first-child {
+    width: 8% !important;
+    min-width: 0 !important;
+  }
+
+  #tab-comparison .comp-tbl .plan-badge {
+    display: block !important;
+    font-size: 5.5px !important;
+    padding: 0 !important;
+    margin-top: 1px !important;
+  }
+
+  #tab-comparison .value-icon,
+  #tab-comparison .cov-tip-wrap {
+    display: none !important;
+  }
+
+  #tab-comparison .comparison-disclaimer,
+  #tab-comparison .comparison-notes {
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  #tab-comparison .disclaimer,
+  #tab-comparison .disclaimer-text p,
+  #tab-comparison .comparison-notes .disclaimer-text li {
+    font-size: 7.5px !important;
+    line-height: 1.25 !important;
+  }
+}
+
 /* ── Tab 3: Vision & Legal Layout ──────────────── */
 #tab-vl .tab-inner {
   max-width: 1100px;
