@@ -1149,8 +1149,8 @@ tr:not(.na-row) .cov-info-btn {
   border-right: 2px solid var(--warm-gray) !important;
 }
 
-/* 2. Darken the right border of every Net Premium column to frame the plans correctly */
+/* 2. Darken the left border of every Net Premium column to frame the plans correctly */
 .comp-tbl tbody td:nth-child(2n) {
-  border-right: 2px solid var(--navy) !important;
+  border-left: 2px solid var(--navy) !important;
 }
 
