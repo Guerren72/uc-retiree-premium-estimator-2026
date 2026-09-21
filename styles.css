@@ -1217,7 +1217,7 @@ tr:not(.na-row) .cov-info-btn {
 @media print {
   @page {
     size: landscape;
-    margin: 0.2in;
+    margin: 0.1in;
   }
 
   html,
@@ -1289,7 +1289,7 @@ tr:not(.na-row) .cov-info-btn {
     max-width: 100% !important;
     table-layout: fixed !important;
     border-collapse: collapse !important;
-    font-size: 6.4px !important;
+    font-size: 7.4px !important;
   }
 
   #tab-comparison .comp-tbl thead {
@@ -1302,17 +1302,17 @@ tr:not(.na-row) .cov-info-btn {
   }
 
   #tab-comparison .comp-tbl thead tr:first-child th {
-    font-size: 6.4px !important;
-    line-height: 1.05 !important;
-    padding: 3px 2px !important;
+    font-size: 7.2px !important;
+    line-height: 1.12 !important;
+    padding: 5px 0 !important;
     white-space: normal !important;
     border-right-width: 1px !important;
   }
 
   #tab-comparison .comp-tbl thead tr:nth-child(2) th {
-    font-size: 5.8px !important;
-    line-height: 1.05 !important;
-    padding: 2px 1px !important;
+    font-size: 6.5px !important;
+    line-height: 1.1 !important;
+    padding: 4px 0 !important;
     letter-spacing: 0 !important;
     white-space: normal !important;
     border-right-width: 1px !important;
@@ -1321,13 +1321,55 @@ tr:not(.na-row) .cov-info-btn {
 
   #tab-comparison .comp-tbl td,
   #tab-comparison .comp-tbl tbody th {
-    font-size: 6.2px !important;
-    line-height: 1.05 !important;
-    padding: 2px 1px !important;
+    font-size: 7.4px !important;
+    line-height: 1.2 !important;
+    padding: 5px 0 !important;
     white-space: normal !important;
     border-right-width: 1px !important;
   }
 
+  /* Keep dollar values on one line without adding side padding */
+  #tab-comparison .comp-tbl td.net,
+  #tab-comparison .comp-tbl td.pbv,
+  #tab-comparison .comp-tbl td.nav {
+    white-space: nowrap !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Give the coverage codes enough room without wasting page width */
+  #tab-comparison .comp-tbl thead tr:first-child th:first-child,
+  #tab-comparison .comp-tbl tbody th[scope="row"] {
+    width: 5.5% !important;
+    padding-left: 2px !important;
+    padding-right: 1px !important;
+  }
+
+  /* Make the coverage rows taller and easier to scan */
+  #tab-comparison .comp-tbl tbody tr {
+    height: 24px !important;
+  }
+
+  /* Keep the information icon compact */
+  #tab-comparison .cov-cell {
+    gap: 2px !important;
+  }
+
+  #tab-comparison .cov-info-btn {
+   width: 9px !important;
+    height: 9px !important;
+    font-size: 6px !important;
+  }
+
+  /* Slightly larger plan-type labels without consuming side space */
+  #tab-comparison .plan-badge {
+    font-size: 5.5px !important;
+    line-height: 1.05 !important;
+    padding: 0 !important;
+    margin-top: 2px !important;
+  }
+ }
+  
   /* Override existing nowrap rules so values can compress into columns */
   #tab-comparison .amount,
   #tab-comparison .amount.retiree-pays,
