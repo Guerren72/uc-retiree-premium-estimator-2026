@@ -484,6 +484,15 @@ function renderVisionLegal() {
 }
 
 /* tabs/events */
+let restoreTabAfterPrintId = null;
+let restoreTabFallbackTimer = null;
+
+function getActiveTabId() {
+  return document.querySelector('.tab-btn.active')?.dataset.tab
+    || document.querySelector('.tab-panel.active')?.id
+    || 'tab-estimator';
+}
+
 function showTab(tabId) {
   document.querySelectorAll('.tab-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.tab === tabId);
@@ -495,6 +504,35 @@ function showTab(tabId) {
   if (tabId === 'tab-estimator') renderEstimator();
   if (tabId === 'tab-comparison') renderComparison();
   if (tabId === 'tab-vl') renderVisionLegal();
+}
+
+function restoreTabAfterPrint() {
+  if (restoreTabFallbackTimer !== null) {
+    clearTimeout(restoreTabFallbackTimer);
+    restoreTabFallbackTimer = null;
+  }
+
+  if (!restoreTabAfterPrintId || restoreTabAfterPrintId === 'tab-comparison') {
+    restoreTabAfterPrintId = null;
+    return;
+  }
+
+  showTab(restoreTabAfterPrintId);
+  restoreTabAfterPrintId = null;
+}
+
+function printMedicalPlanComparison() {
+  const activeTabId = getActiveTabId();
+  restoreTabAfterPrintId = activeTabId !== 'tab-comparison' ? activeTabId : null;
+
+  showTab('tab-comparison');
+  renderComparison();
+
+  restoreTabFallbackTimer = setTimeout(() => {
+    restoreTabAfterPrint();
+  }, 1000);
+
+  window.print();
 }
 
 function initTabs() {
@@ -514,6 +552,13 @@ function initEvents() {
     node.addEventListener('input', () => renderEstimator());
     node.addEventListener('change', () => renderEstimator());
   });
+
+  const printBtn = document.getElementById('print-comparison-btn');
+  if (printBtn) {
+    printBtn.addEventListener('click', printMedicalPlanComparison);
+  }
+
+  window.addEventListener('afterprint', restoreTabAfterPrint);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -735,6 +735,26 @@ tr:not(.na-row) .cov-info-btn {
   font-weight: 400;
 }
 
+.print-comparison-btn {
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: var(--gold);
+  border-radius: 10px;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.print-comparison-btn:hover,
+.print-comparison-btn:focus-visible {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+
 /* ── Vision, Legal Premiums tab ────────────────── */
 #tab-vl .tab-inner {
   width: 75vw;
@@ -1200,6 +1220,10 @@ tr:not(.na-row) .cov-info-btn {
   /* Remove page chrome so the comparison table gets maximum space */
   header,
   .tab-bar {
+    display: none !important;
+  }
+
+  .print-comparison-btn {
     display: none !important;
   }
 
