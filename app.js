@@ -521,8 +521,22 @@ function restoreTabAfterPrint() {
   restoreTabAfterPrintId = null;
 }
 
+function queueRestoreTabFallback() {
+  const tryRestore = () => {
+    if (!restoreTabAfterPrintId) return;
+
+    if (document.visibilityState === 'visible' && document.hasFocus()) {
+      restoreTabAfterPrint();
+      return;
+    }
+
+    restoreTabFallbackTimer = setTimeout(tryRestore, 500);
+  };
+
+  restoreTabFallbackTimer = setTimeout(tryRestore, 1000);
+}
+
 function printMedicalPlanComparison() {
-  const supportsAfterPrint = 'onafterprint' in window;
   const activeTabId = getActiveTabId();
   restoreTabAfterPrintId = activeTabId !== 'tab-comparison' ? activeTabId : null;
 
@@ -530,12 +544,7 @@ function printMedicalPlanComparison() {
   renderComparison();
 
   window.print();
-
-  if (!supportsAfterPrint) {
-    restoreTabFallbackTimer = setTimeout(() => {
-      restoreTabAfterPrint();
-    }, 1000);
-  }
+  queueRestoreTabFallback();
 }
 
 function initTabs() {
@@ -561,9 +570,7 @@ function initEvents() {
     printBtn.addEventListener('click', printMedicalPlanComparison);
   }
 
-  if ('onafterprint' in window) {
-    window.addEventListener('afterprint', restoreTabAfterPrint);
-  }
+  window.addEventListener('afterprint', restoreTabAfterPrint);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
