@@ -486,6 +486,7 @@ function renderVisionLegal() {
 /* tabs/events */
 let restoreTabAfterPrintId = null;
 let restoreTabFallbackTimer = null;
+let restoreTabFallbackCleanup = null;
 
 function getActiveTabId() {
   return document.querySelector('.tab-btn.active')?.dataset.tab
@@ -506,11 +507,20 @@ function showTab(tabId) {
   if (tabId === 'tab-vl') renderVisionLegal();
 }
 
-function restoreTabAfterPrint() {
+function clearPrintRestoreFallbackState() {
   if (restoreTabFallbackTimer !== null) {
     clearTimeout(restoreTabFallbackTimer);
     restoreTabFallbackTimer = null;
   }
+
+  if (restoreTabFallbackCleanup) {
+    restoreTabFallbackCleanup();
+    restoreTabFallbackCleanup = null;
+  }
+}
+
+function restoreTabAfterPrint() {
+  clearPrintRestoreFallbackState();
 
   if (!restoreTabAfterPrintId || restoreTabAfterPrintId === 'tab-comparison') {
     restoreTabAfterPrintId = null;
@@ -522,6 +532,8 @@ function restoreTabAfterPrint() {
 }
 
 function queueRestoreTabFallback() {
+  clearPrintRestoreFallbackState();
+
   const startedAt = Date.now();
   let sawPrintFocusChange = false;
 
@@ -535,6 +547,7 @@ function queueRestoreTabFallback() {
     document.removeEventListener('visibilitychange', markPrintFocusChange);
     window.removeEventListener('blur', markPrintFocusChange);
   };
+  restoreTabFallbackCleanup = clearListeners;
 
   document.addEventListener('visibilitychange', markPrintFocusChange);
   window.addEventListener('blur', markPrintFocusChange);
@@ -563,6 +576,8 @@ function queueRestoreTabFallback() {
 }
 
 function printMedicalPlanComparison() {
+  clearPrintRestoreFallbackState();
+
   const activeTabId = getActiveTabId();
   restoreTabAfterPrintId = activeTabId !== 'tab-comparison' ? activeTabId : null;
 
