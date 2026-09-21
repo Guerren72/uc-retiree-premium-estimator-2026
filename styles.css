@@ -1141,16 +1141,21 @@ tr:not(.na-row) .cov-info-btn {
   }
 }
 
-/* ── Mid-Gray Left Border for Net Premium Columns ── */
 
-/* Targets the left border of every Net Premium data cell in the table body */
-.comp-tbl tbody td:nth-child(2n+1) {
-  border-left: 2px solid #888888 !important; /* Mid-gray color */
-}
-/* ── Warm-Gray Left Border for Part B Reimb. Columns ── */
+/* ── Clean Plan Boundaries (Screen View) ── */
 
-/* Targets the left border of every Part B Reimb. data cell in the table body */
+/* 1. Darken the left border of every NET PREMIUM column to create the left plan boundary */
 .comp-tbl tbody td:nth-child(2n) {
-  border-left: 1px solid var(--warm-gray) !important;
+  border-left: 2px solid var(--border) !important;
+}
+
+/* 2. Darken the right border of every PART B REIMB. column to create the right plan boundary */
+.comp-tbl tbody td:nth-child(2n+1) {
+  border-right: 2px solid var(--border) !important;
+}
+
+/* 3. Keep the inner line separating Net Premium and Part B thin and clean */
+.comp-tbl tbody td:nth-child(2n) {
+  border-right: 2px solid var(--warm-gray) !important;
 }
 
