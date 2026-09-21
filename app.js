@@ -528,11 +528,11 @@ function printMedicalPlanComparison() {
   showTab('tab-comparison');
   renderComparison();
 
+  window.print();
+
   restoreTabFallbackTimer = setTimeout(() => {
     restoreTabAfterPrint();
   }, 1000);
-
-  window.print();
 }
 
 function initTabs() {
