@@ -1178,33 +1178,32 @@ tr:not(.na-row) .cov-info-btn {
   text-align: right;
 }
 
-/* ── Print: Medical Plan Comparison ─────────────────
-   Makes the comparison tab printable with all columns visible.
-   Best results: browser print dialog → Landscape, margins: Minimum/None.
+/* ── Print: shrink Medical Plan Comparison table ─────────────
+   To print: open the Medical Plan Comparison tab, then print.
+   Best browser setting: Landscape orientation.
 */
 @media print {
   @page {
     size: landscape;
-    margin: 0.25in;
+    margin: 0.2in;
   }
 
   html,
   body {
-    background: white !important;
+    background: #fff !important;
     color: #000 !important;
-    font-size: 9px;
+    font-size: 8px !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* Hide app chrome/navigation in print */
+  /* Remove page chrome so the comparison table gets maximum space */
   header,
   .tab-bar {
     display: none !important;
   }
 
-  /* Print only the active tab; when Medical Plan Comparison is active,
-     it gets the whole printed page width. */
+  /* Print only the currently selected tab */
   .tab-panel {
     display: none !important;
   }
@@ -1213,41 +1212,48 @@ tr:not(.na-row) .cov-info-btn {
     display: block !important;
   }
 
+  /* Give the comparison tab the entire printable page */
   #tab-comparison .tab-inner {
-    max-width: none !important;
     width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
     padding: 0 !important;
-    gap: 8px !important;
+    gap: 6px !important;
   }
 
   #tab-comparison .comp-meta {
-    gap: 8px !important;
+    gap: 6px !important;
     margin-bottom: 4px !important;
   }
 
   #tab-comparison .comp-meta h2 {
-    font-size: 13px !important;
+    font-size: 11px !important;
+    line-height: 1.1 !important;
   }
 
   #tab-comparison .contrib-pill {
-    font-size: 11px !important;
-    padding: 2px 8px !important;
+    font-size: 9px !important;
+    padding: 2px 7px !important;
+    border-radius: 10px !important;
   }
 
-  /* Critical: remove scroll container behavior for print */
+  /* Important: remove horizontal scrolling for print */
   #tab-comparison .comp-wrap {
     overflow: visible !important;
     width: 100% !important;
+    max-width: none !important;
     border: 1px solid #999 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
   }
 
+  /* Main shrink rules */
   #tab-comparison .comp-tbl {
     width: 100% !important;
+    max-width: 100% !important;
     table-layout: fixed !important;
-    font-size: 7.5px !important;
-    page-break-inside: auto;
+    border-collapse: collapse !important;
+    font-size: 6.4px !important;
   }
 
   #tab-comparison .comp-tbl thead {
@@ -1255,65 +1261,103 @@ tr:not(.na-row) .cov-info-btn {
   }
 
   #tab-comparison .comp-tbl tr {
-    page-break-inside: avoid;
     break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   #tab-comparison .comp-tbl thead tr:first-child th {
-    font-size: 7.5px !important;
-    padding: 4px 3px !important;
-    line-height: 1.1 !important;
+    font-size: 6.4px !important;
+    line-height: 1.05 !important;
+    padding: 3px 2px !important;
     white-space: normal !important;
+    border-right-width: 1px !important;
   }
 
   #tab-comparison .comp-tbl thead tr:nth-child(2) th {
-    font-size: 6.5px !important;
-    padding: 3px 2px !important;
+    font-size: 5.8px !important;
+    line-height: 1.05 !important;
+    padding: 2px 1px !important;
     letter-spacing: 0 !important;
     white-space: normal !important;
+    border-right-width: 1px !important;
+    border-bottom-width: 1px !important;
   }
 
   #tab-comparison .comp-tbl td,
   #tab-comparison .comp-tbl tbody th {
-    font-size: 7px !important;
-    padding: 3px 2px !important;
-    line-height: 1.15 !important;
+    font-size: 6.2px !important;
+    line-height: 1.05 !important;
+    padding: 2px 1px !important;
+    white-space: normal !important;
+    border-right-width: 1px !important;
+  }
+
+  /* Override existing nowrap rules so values can compress into columns */
+  #tab-comparison .amount,
+  #tab-comparison .amount.retiree-pays,
+  #tab-comparison .amount.partb,
+  #tab-comparison .comp-tbl td.net,
+  #tab-comparison .comp-tbl td.pbv,
+  #tab-comparison .value-icon {
     white-space: normal !important;
   }
 
-  /* Keep the first column readable, but let the other columns compress */
+  /* Keep the first/coverage column narrow enough for the rest of the table */
   #tab-comparison .comp-tbl thead tr:first-child th:first-child,
   #tab-comparison .comp-tbl thead tr:nth-child(2) th:first-child,
   #tab-comparison .comp-tbl tbody th[scope="row"],
   #tab-comparison .comp-tbl tbody tr > :first-child {
-    width: 8% !important;
+    width: 7% !important;
     min-width: 0 !important;
   }
 
-  #tab-comparison .comp-tbl .plan-badge {
+  /* Shrink plan badges instead of letting them widen columns */
+  #tab-comparison .plan-badge {
     display: block !important;
-    font-size: 5.5px !important;
+    font-size: 4.8px !important;
+    line-height: 1 !important;
     padding: 0 !important;
     margin-top: 1px !important;
+    border-radius: 0 !important;
   }
 
-  #tab-comparison .value-icon,
-  #tab-comparison .cov-tip-wrap {
+  /* Shrink value icons so they do not force wider cells */
+  #tab-comparison .value-icon {
+    margin-left: 1px !important;
+    vertical-align: baseline !important;
+  }
+
+  #tab-comparison .value-icon svg {
+    width: 7px !important;
+    height: 7px !important;
+  }
+
+  /* Tooltips are hover-only and should not take print space */
+  #tab-comparison .value-tip,
+  #tab-comparison .cov-tooltip {
     display: none !important;
   }
 
+  /* Notes/disclaimers also shrink for print */
   #tab-comparison .comparison-disclaimer,
-  #tab-comparison .comparison-notes {
+  #tab-comparison .comparison-notes,
+  #tab-comparison .disclaimer {
     box-shadow: none !important;
-    page-break-inside: avoid;
+    border-radius: 0 !important;
+    padding: 5px 6px !important;
     break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   #tab-comparison .disclaimer,
   #tab-comparison .disclaimer-text p,
   #tab-comparison .comparison-notes .disclaimer-text li {
-    font-size: 7.5px !important;
-    line-height: 1.25 !important;
+    font-size: 6.4px !important;
+    line-height: 1.15 !important;
+  }
+
+  #tab-comparison .comparison-notes .disclaimer-text ul {
+    padding-left: 10px !important;
   }
 }
 
