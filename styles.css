@@ -215,7 +215,7 @@ input[type="number"] {
 }
 
 select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 32px;
@@ -246,6 +246,7 @@ input[type="number"]:disabled {
   border-top: 1px solid var(--border);
   margin: 0;
 }
+
 /* ── UC Contribution display ──────────────────── */
 .contrib-display {
   background: var(--navy);
@@ -274,11 +275,6 @@ input[type="number"]:disabled {
   color: var(--gold);
   min-width: 0;
   text-align: center;
-}
-
-.contrib-value.na {
-  color: var(--mid-gray);
-  font-size: 18px;
 }
 
 .contrib-value.na {
@@ -405,11 +401,11 @@ tbody tr > :first-child {
 #tab-estimator .results-panel table tbody td:nth-child(2),
 #tab-estimator .results-panel table tbody td:nth-child(3),
 #tab-estimator .results-panel table tbody td:nth-child(4),
-#tab-estimator .results-panel table tbody td:nth-child(5), /* Added column 5 */
+#tab-estimator .results-panel table tbody td:nth-child(5),
 #tab-estimator .results-panel table thead th:nth-child(2),
 #tab-estimator .results-panel table thead th:nth-child(3),
 #tab-estimator .results-panel table thead th:nth-child(4),
-#tab-estimator .results-panel table thead th:nth-child(5) { /* Added column 5 */
+#tab-estimator .results-panel table thead th:nth-child(5) {
   text-align: right !important;
 }
 
@@ -431,12 +427,11 @@ tbody tr > :first-child {
 }
 
 /* Ensure the wrapper structure doesn't break alignment rules */
-.amount { 
-  color: var(--text); 
-  white-space: nowrap; 
+.amount {
+  color: var(--text);
+  white-space: nowrap;
 }
 
-.amount { color: var(--text); white-space: nowrap; }
 .amount.uc-pays { color: var(--navy); font-weight: 600; }
 .amount.retiree-pays { color: var(--red); font-weight: 600; }
 .amount.partb { color: var(--green); font-weight: 600; }
@@ -467,12 +462,12 @@ tbody tr > :first-child {
   line-height: 1.5;
 }
 
- .disclaimer-text p {
-   font-size: 12px;
-   color: var(--text-muted);
-   line-height: 1.5;
- }
- 
+.disclaimer-text p {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 /* Medical Plan Comparison Notes card */
 .comparison-notes .disclaimer-text ul {
   padding-left: 18px;
@@ -487,8 +482,7 @@ tbody tr > :first-child {
 /* Medical Plan Comparison: non-zero NET PREMIUM values in red */
 .comp-tbl td.net { font-weight: 600; color: var(--navy); }
 .comp-tbl td.net.zero { color: var(--navy); }
-.comp-tbl td.net.nonzero { color: var(--red);
-}
+.comp-tbl td.net.nonzero { color: var(--red); }
 
 #tab-estimator .results-panel table {
   table-layout: fixed;
@@ -753,12 +747,6 @@ tr:not(.na-row) .cov-info-btn {
   margin: 0;
 }
 
-#tab-vl .card {
-  flex: 1 1 calc(50% - 10px);
-  min-width: 0;
-  margin: 0;
-}
-
 .comp-wrap {
   overflow-x: auto;
   border: 2px solid var(--border);
@@ -772,7 +760,6 @@ tr:not(.na-row) .cov-info-btn {
   font-size: 12px;
   background: white;
 }
-
 
 .comp-tbl thead tr:first-child th {
   background: var(--navy);
@@ -790,7 +777,7 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl thead tr:first-child th:first-child {
   text-align: left;
   min-width: 72px;
-  border-right: 2px 2px solid var(--red);
+  border-right: 2px solid var(--red);
 }
 
 .comp-tbl thead tr:nth-child(2) th {
@@ -808,7 +795,7 @@ tr:not(.na-row) .cov-info-btn {
 }
 
 .comp-tbl thead tr:nth-child(2) th:first-child {
-  text-align: center;
+  text-align: left;
   border-right: 2px solid var(--border);
 }
 
@@ -1002,210 +989,33 @@ tr:not(.na-row) .cov-info-btn {
   line-height: 1.6;
 }
 
-.g3-note strong {
-  color: var(--navy);
-}
-
-/* ── Vision, Legal Premiums tab ────────────────── */
-#tab-vl .tab-inner {
-  width: 75vw;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 32px 0 64px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 20px;
-}
-
-#tab-vl .card {
-  flex: 1 1 calc(50% - 10px);
-  min-width: 0;
-  margin: 0;
-}
-
-/* ── Responsive ───────────────────────────────── */
-@media (max-width: 680px) {
-  .header-inner { padding: 20px 16px; }
-  header h1 { font-size: 18px; }
-  .tab-bar-inner { padding: 0 12px; overflow-x: auto; }
-
-  #tab-estimator .tab-inner {
-    grid-template-columns: 1fr;
-    padding: 20px 16px 48px;
-  }
-
-  #tab-comparison .tab-inner,
-  #tab-g3 .tab-inner,
-  #tab-vl .tab-inner {
-    width: auto;
-    padding: 20px 16px 48px;
-  }
-
-  #tab-vl .tab-inner {
-    flex-direction: column;
-  }
-
-  #tab-vl .card {
-    width: 100%;
-    flex: none;
-  }
-}
-
-  #tab-vl .tab-inner {
-    flex-direction: column;
-  }
-
-  #tab-vl .card {
-    width: 100%;
-    flex: none;
-  }
-}
-
-/* Guerren Darken the right border of the first column (Coverage Level) */
-.comp-tbl th:first-child,
-.comp-tbl td:first-child {
-  border-right: 2px solid var(--navy);
-}
-
-/* ── Guerren Shifted Visual Grouping for Medical Plan Columns ── */
-
-/* 1. Shift the top-row plan header borders to the right */
-.comp-tbl thead tr:first-child th:not(:first-child) {
-  border-right: none; /* Clear previous rule if needed */
-}
-.comp-tbl thead tr:first-child th {
-  border-left: 2px solid var(--text-muted);
-}
-.comp-tbl thead tr:first-child th:first-child {
-  border-left: none; /* Keep the very first column clear */
-}
-
-/* 2. Target every odd (now even) sub-header cell (the "Net Premium" headers) */
-.comp-tbl thead tr:last-child th:nth-child(even) {
-  border-right: 2px solid var(--text-muted);
-}
-
-/* 3. Target every odd data column cell in the body rows */
-.comp-tbl tbody td:nth-child(odd) {
-  border-right: 2px solid var(--text-muted);
-}
-.comp-tbl tbody td:first-child {
-  border-right: none; /* Keep the "Coverage Level" column clear */
-}
-
-/* Tab 1 Estimator: right-align all premium value columns (2–5) */
-#tab-estimator .results-panel table thead th:nth-child(n+2):nth-child(-n+5),
-#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) {
-  text-align: right !important;
-}
-
-/* Ensure inner value wrappers fill the cell and honor right align */
-#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .amount,
-#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .value-icon {
-  display: inline-flex;
-  justify-content: flex-end;
-  width: 100%;
-  text-align: right;
-}
-
-/* Keep first column left */
-#tab-estimator .results-panel table thead th:first-child,
-#tab-estimator .results-panel table tbody th[scope="row"],
-#tab-estimator .results-panel table tbody td:first-child {
-  text-align: left !important;
-}
-
-#tab-estimator .results-panel table tbody td:nth-child(5) > * {
-  display: block !important;
-  width: 100% !important;
-  text-align: right !important;
-}
-/* Column 5: vertical center at the table-cell level */
-#tab-estimator .results-panel table tbody td:nth-child(5) {
-  vertical-align: middle !important;
-}
-
-/* If col 5 content is wrapped, keep wrapper as inline-flex (not block) */
-#tab-estimator .results-panel table tbody td:nth-child(5) .amount,
-#tab-estimator .results-panel table tbody td:nth-child(5) .value-icon,
-#tab-estimator .results-panel table tbody td:nth-child(5) .na-cell {
-  display: inline-flex !important;
-  align-items: center !important;
-  vertical-align: middle !important;
-}
-
-/* Tab 1 Estimator: keep numeric/result columns right-aligned (2–5) */
-#tab-estimator .results-panel table thead th:nth-child(n+2):nth-child(-n+5),
-#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) {
-  text-align: right !important;
-}
-
-/* Vertical centering for column 5 cells */
-#tab-estimator .results-panel table tbody td:nth-child(5),
-#tab-estimator .results-panel table thead th:nth-child(5) {
-  vertical-align: middle !important;
-}
-
-/* Keep value wrappers right-aligned and vertically centered */
-#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .amount,
-#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .na-cell {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: flex-end !important;
-  text-align: right !important;
-}
-
-/* Keep icon+value combos aligned correctly */
-#tab-estimator .results-panel table tbody td:nth-child(n+2):nth-child(-n+5) .value-icon {
-  display: inline-flex;
-  align-items: center;
-  vertical-align: middle;
-}
-
-/* Append 5th column right-alignment to your specific table rules */
-#tab-estimator .results-panel table tbody td:nth-child(5),
-#tab-estimator .results-panel table thead th:nth-child(5) {
-  text-align: right !important;
-}
-
-/* Force flex elements inside the 5th column to right-align if necessary */
-#tab-estimator .results-panel table td:nth-child(5) .amount {
-  display: inline-flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  text-align: right;
-}
-
 /* ══════════════════════════════════════════════════
    PRINT — Medical Plan Comparison (landscape letter)
    ══════════════════════════════════════════════════ */
 @media print {
-
   @page {
     size: letter landscape;
     margin: 0.3in 0.25in;
   }
 
-  /* Hide chrome + all other tabs */
+  /* Hide all non-comparison UI */
   header,
   .tab-bar,
-  .tab-panel,
+  #tab-estimator,
+  #tab-vl,
   #tab-comparison .hint,
   #tab-comparison .notes-card,
   #tab-comparison .comparison-disclaimer {
     display: none !important;
   }
 
-  /* Show only the comparison panel, regardless of active tab */
-  #tab-comparison {
-    display: block !important;
-  }
-
   body {
     background: white;
     font-size: 11pt;
+  }
+
+  #tab-comparison {
+    display: block !important;
   }
 
   #tab-comparison .tab-inner {
@@ -1220,7 +1030,9 @@ tr:not(.na-row) .cov-info-btn {
     margin-bottom: 6px;
   }
 
-  .comp-meta h2 { font-size: 13pt; }
+  .comp-meta h2 {
+    font-size: 13pt;
+  }
 
   .contrib-pill {
     font-size: 12pt;
@@ -1229,7 +1041,6 @@ tr:not(.na-row) .cov-info-btn {
     color: var(--gold) !important;
   }
 
-  /* Table container: no scroll, no shadow, full width */
   .comp-wrap {
     overflow: visible !important;
     border: 1px solid var(--border);
@@ -1245,33 +1056,51 @@ tr:not(.na-row) .cov-info-btn {
     page-break-inside: avoid;
   }
 
-  /* Plan-name header row: maximize readability, minimize side padding */
-  .comp-tbl thead tr:first-child th {
-    font-size: 8pt;
-    padding: 8px 2px;
-    line-height: 1.25;
-  }
-
-  .comp-tbl thead tr:first-child th:first-child {
-    padding: 8px 4px !important;
-    min-width: 0;
-    width: 8%;
-  }
-
-  .plan-badge {
-    font-size: 6pt;
-    padding: 1px 3px;
-    margin-top: 2px;
-  }
-
-  /* Sub-header row */
-  .comp-tbl thead tr:nth-child(2) th {
+  /* Screen styles remain unchanged; print-only header shrinking starts here */
+  #tab-comparison .comp-tbl thead tr:first-child th {
+    background: var(--navy);
+    color: white;
     font-size: 6.5pt;
-    padding: 6px 1px;
+    padding: 6px 2px;
+    line-height: 1.15;
     letter-spacing: 0;
+    white-space: normal;
+    word-break: break-word;
+    hyphens: auto;
+    vertical-align: bottom;
   }
 
-  /* Body: tall rows (vertical whitespace), tight columns */
+  #tab-comparison .comp-tbl thead tr:first-child th:first-child {
+    font-size: 8pt;
+    padding: 6px 4px !important;
+    text-align: center;
+  }
+
+  #tab-comparison .plan-badge {
+    display: inline-block;
+    font-size: 5.5pt;
+    padding: 0 2px;
+    margin-top: 1px;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  #tab-comparison .comp-tbl thead tr:nth-child(2) th {
+    background: var(--warm-gray);
+    color: var(--text-muted);
+    font-size: 6pt;
+    padding: 4px 1px;
+    letter-spacing: 0;
+    white-space: normal;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  #tab-comparison .comp-tbl thead tr:nth-child(2) th:first-child {
+    font-size: 6.5pt;
+    text-align: center;
+  }
+
   .comp-tbl td,
   .comp-tbl tbody th {
     font-size: 9pt;
@@ -1284,20 +1113,10 @@ tr:not(.na-row) .cov-info-btn {
     font-size: 9pt;
   }
 
-  .comp-tbl td.pbv,
-  .comp-tbl td.nav {
-    font-size: 8pt;
-  }
-
-  .comp-tbl tbody tr {
-    page-break-inside: avoid;
-  }
-
   .comp-tbl tbody tr:hover {
     background: none;
   }
 
-  /* Suppress the "i" tooltips in COVERAGE LEVEL */
   .cov-info-btn,
   .cov-tip-wrap,
   .cov-tooltip {
@@ -1308,85 +1127,8 @@ tr:not(.na-row) .cov-info-btn {
     gap: 0;
   }
 
-  /* Preserve navy/gold/red/green in print */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-}
-  /* ... existing rules above unchanged ... */
-
-  /* Plan-name header row: shrink further, allow tight wrapping */
-  .comp-tbl thead tr:first-child th {
-    font-size: 6.5pt;
-    padding: 6px 2px;
-    line-height: 1.15;
-    font-weight: 600;
-    letter-spacing: 0;
-    white-space: normal;      /* allow wrapping instead of overflow */
-    word-break: break-word;
-    hyphens: auto;
-    vertical-align: bottom;
-  }
-
-  .comp-tbl thead tr:first-child th:first-child {
-    font-size: 8pt;
-    padding: 6px 4px !important;
-  }
-
-  .plan-badge {
-    font-size: 5.5pt;
-    padding: 0 2px;
-    margin-top: 1px;
-    line-height: 1.2;
-    white-space: normal;
-  }
-
-  /* Sub-header row (Net Premium / Part B Reimb.) */
-  .comp-tbl thead tr:nth-child(2) th {
-    font-size: 6pt;
-    padding: 4px 1px;
-    letter-spacing: 0;
-    white-space: normal;      /* was nowrap — let "Part B Reimb." wrap if needed */
-    line-height: 1.15;
-  }
-
-  .comp-tbl thead tr:nth-child(2) th:first-child {
-    font-size: 6.5pt;
-  }
-}
-/* ── Tab 3: Vision & Legal Layout ──────────────── */
-#tab-vl .tab-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 32px 32px 64px;
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Spreads the two cards evenly into 2 columns */
-  gap: 24px;
-  align-items: start;
-}
-
-/* Responsive breakpoint: Stacks cards vertically on smaller mobile views */
-@media (max-width: 768px) {
-  #tab-vl .tab-inner {
-    grid-template-columns: 1fr; /* Drops down to 1 full-width column on mobile */
-    padding: 20px 16px;
-  }
-  
-}
-.vl-note {
-  display: block;
-  padding: 12px 16px 16px;
-  font-style: normal;
-}
-#tab-vl #vision-area .vl-note {
-  display: block;
-  margin: 0 16px 16px;
-  padding: 12px 16px;
-  background: var(--warm-gray);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text-muted);
-  font-size: 11.5px;
-  line-height: 1.4;
 }
