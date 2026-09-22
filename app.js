@@ -125,7 +125,7 @@ const RATES = {
 };
 
 const COV_DESCS = {
-  U:   "Retiree only",
+  U:   "University retiree only",
   UC:  "Retiree + Child(ren)",
   UA:  "Retiree + Adult",
   UAC: "Retiree + Adult + Child(ren)",
