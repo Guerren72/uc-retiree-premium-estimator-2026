@@ -457,7 +457,7 @@ tbody tr > :first-child {
 
 /* Increase indentation for Notes on the Medical, Dental Premiums tab */
 #tab-estimator .notes-card .disclaimer-text ul {
-  padding-left: 32px;
+  padding-left: 16px;
 }
 
 /* ── Disclaimer body text ─────────────────────── */
