@@ -867,6 +867,15 @@ tr:not(.na-row) .cov-info-btn {
   background: rgba(255, 255, 255, 0.18);
   color: rgba(255, 255, 255, 0.80);
 }
+.comp-tbl .plan-badge {
+  display: block;
+  width: 140px;
+  max-width: 100%;
+  margin: 5px auto 0;
+  white-space: normal;
+  overflow-wrap: break-word;
+  line-height: 1.25;
+}
 
 /* ── Tab 3: Group 3 Table ─────────────────────── */
 #tab-g3 .tab-inner {
