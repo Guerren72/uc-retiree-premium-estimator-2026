@@ -449,6 +449,12 @@ tbody tr > :first-child {
   white-space: nowrap;
 }
 
+/* Notes card on the Medical, Dental Premiums tab */
+#tab-estimator .notes-card .disclaimer-text li {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 /* ── Disclaimer body text ─────────────────────── */
 .disclaimer-text {
   display: flex;
