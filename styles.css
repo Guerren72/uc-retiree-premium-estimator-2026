@@ -474,15 +474,16 @@ tbody tr > :first-child {
   line-height: 1.5;
 }
 
-/* Medical Plan Comparison Notes card */
-.comparison-notes .disclaimer-text ul {
-  padding-left: 18px;
+/* Notes cards */
+#tab-estimator .notes-card .disclaimer-text li,
+#tab-comparison .notes-card .disclaimer-text li {
+  font-size: 12px;
+  line-height: 1.4;
 }
 
-.comparison-notes .disclaimer-text li {
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.45;
+/* Preserve comparison Notes list indentation */
+#tab-comparison .notes-card .disclaimer-text ul {
+  padding-left: 18px;
 }
 
 /* Medical Plan Comparison: non-zero NET PREMIUM values in red */
