@@ -1045,14 +1045,9 @@ tr:not(.na-row) .cov-info-btn {
     margin: 0.3in 0.25in;
   }
 
-  /* Hide all non-comparison UI */
+  /* Hide navigation and print only the currently selected tab. */
   header,
-  .tab-bar,
-  #tab-estimator,
-  #tab-vl,
-  #tab-comparison .hint,
-  #tab-comparison .notes-card,
-  #tab-comparison .comparison-disclaimer {
+  .tab-bar {
     display: none !important;
   }
 
@@ -1061,8 +1056,19 @@ tr:not(.na-row) .cov-info-btn {
     font-size: 11pt;
   }
 
-  #tab-comparison {
+  .tab-panel {
+    display: none !important;
+  }
+
+  .tab-panel.active {
     display: block !important;
+  }
+
+  /* Preserve the existing comparison-table print appearance. */
+  #tab-comparison.active .hint,
+  #tab-comparison.active .notes-card,
+  #tab-comparison.active .comparison-disclaimer {
+    display: none !important;
   }
 
   #tab-comparison .tab-inner {
@@ -1187,6 +1193,47 @@ tr:not(.na-row) .cov-info-btn {
   }
 }
 
+  /* Medical, Dental Premiums print layout */
+  #tab-estimator.active .tab-inner {
+    max-width: none;
+    width: 100%;
+    padding: 0;
+    grid-template-columns: 30% 1fr;
+    gap: 16px;
+  }
+
+  #tab-estimator.active .card {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  #tab-estimator.active .results-panel .contrib-card {
+    width: 50%;
+  }
+
+  #tab-estimator.active .table-wrap {
+    overflow: visible;
+  }
+
+  /* Vision, Legal Premiums print layout */
+  #tab-vl.active .tab-inner {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  #tab-vl.active .card {
+    flex: 1 1 50%;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  #tab-vl.active .table-wrap {
+    overflow: visible;
+  }
 
 /* ── Clean Plan Boundaries (Screen View) ── */
 
