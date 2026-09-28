@@ -610,6 +610,7 @@ function initEvents() {
   if (printBtn) {
     printBtn.addEventListener('click', printActiveTab);
   }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   initTabs();
