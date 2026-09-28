@@ -608,11 +608,8 @@ function initEvents() {
 
   const printBtn = document.getElementById('print-comparison-btn');
   if (printBtn) {
-    printBtn.addEventListener('click', printMedicalPlanComparison);
+    printBtn.addEventListener('click', printActiveTab);
   }
-
-  window.addEventListener('afterprint', restoreTabAfterPrint);
-}
 
 document.addEventListener('DOMContentLoaded', () => {
   initTabs();
