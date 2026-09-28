@@ -578,17 +578,14 @@ function queueRestoreTabFallback() {
   restoreTabFallbackTimer = setTimeout(tryRestore, 1000);
 }
 
-function printMedicalPlanComparison() {
-  clearPrintRestoreFallbackState();
-
+function printActiveTab() {
   const activeTabId = getActiveTabId();
-  restoreTabAfterPrintId = activeTabId !== 'tab-comparison' ? activeTabId : null;
 
-  showTab('tab-comparison');
-  renderComparison();
+  if (activeTabId === 'tab-estimator') renderEstimator();
+  if (activeTabId === 'tab-comparison') renderComparison();
+  if (activeTabId === 'tab-vl') renderVisionLegal();
 
   window.print();
-  queueRestoreTabFallback();
 }
 
 function initTabs() {
