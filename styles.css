@@ -741,6 +741,13 @@ tr:not(.na-row) .cov-info-btn {
   font-weight: 400;
 }
 
+.comp-tbl td.net,
+.comp-tbl td.net.zero,
+.comp-tbl td.net.nonzero,
+.comp-tbl td.pbv {
+  font-size: 12px;
+}
+
  /* ── Vision, Legal Premiums tab ────────────────── */
  #tab-vl .tab-inner {
    width: 75vw;
