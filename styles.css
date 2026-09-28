@@ -1191,7 +1191,7 @@ tr:not(.na-row) .cov-info-btn {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
-}
+
 
   /* Medical, Dental Premiums print layout */
   #tab-estimator.active .tab-inner {
@@ -1234,7 +1234,7 @@ tr:not(.na-row) .cov-info-btn {
   #tab-vl.active .table-wrap {
     overflow: visible;
   }
-
+}
 /* ── Clean Plan Boundaries (Screen View) ── */
 
 /* 1. Darken the left border of every NET PREMIUM column to create the left plan boundary */
