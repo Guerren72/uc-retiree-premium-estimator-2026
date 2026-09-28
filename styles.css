@@ -1198,3 +1198,49 @@ tr:not(.na-row) .cov-info-btn {
   border-right: 2px solid var(--warm-gray) !important;
 }
 
+/* ── Medical Plan Comparison: fit all columns on larger screens ── */
+@media (min-width: 1200px) {
+  /* Let the comparison tab use more of the viewport */
+  #tab-comparison .tab-inner {
+    max-width: min(1600px, 96vw);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Size columns to the container instead of their content */
+  .comp-tbl {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  /* Allow header text to wrap instead of forcing width */
+  .comp-tbl thead tr:first-child th,
+  .comp-tbl thead tr:nth-child(2) th {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    padding: 8px 5px;
+  }
+
+  .comp-tbl thead tr:nth-child(2) th {
+    font-size: 9.5px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Tighter body cells */
+  .comp-tbl td,
+  .comp-tbl tbody th {
+    padding: 7px 5px;
+    font-size: 11.5px;
+  }
+
+  /* Plan badge shouldn't force a 140px column */
+  .comp-tbl .plan-badge {
+    width: auto;
+  }
+
+  /* Keep the row-label column readable */
+  .comp-tbl thead tr:first-child th:first-child,
+  .comp-tbl tbody tr > :first-child {
+    width: 90px;
+  }
+}
