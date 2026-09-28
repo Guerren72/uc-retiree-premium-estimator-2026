@@ -345,7 +345,10 @@ function renderEstimator() {
     disp.className = 'contrib-value';
   }
 
-  title.textContent = plan || 'Premium Results';
+  const planLabel = plan
+    ? planEl.options[planEl.selectedIndex].text.trim()
+    : '';
+  title.textContent = planLabel || 'Premium Results';
 
   if (!plan) {
     replaceChildren(area, makePlaceholder('📋', 'Select a plan to view premium estimates.'));
