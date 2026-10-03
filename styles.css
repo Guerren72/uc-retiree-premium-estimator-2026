@@ -1192,6 +1192,9 @@ tr:not(.na-row) .cov-info-btn {
     print-color-adjust: exact !important;
   }
 
+  .amount.retiree-pays.zero {
+  color: var(--navy);
+}
 
   /* Medical, Dental Premiums print layout */
   #tab-estimator.active .tab-inner {
