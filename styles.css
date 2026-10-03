@@ -875,7 +875,7 @@ tr:not(.na-row) .cov-info-btn {
 .comp-tbl td.grp-sep { border-right: 2px solid var(--border); }
 .comp-tbl td.net { font-weight: 600; color: var(--navy); }
 .comp-tbl td.net.zero { color: var(--navy); }
-.comp-tbl td.pbv { color: var(--green); font-weight: 600; font-size: 11px; }
+.comp-tbl td.pbv { color: var(--green); font-weight: 600; font-size: 12px; }
 .comp-tbl td.nav { color: var(--mid-gray); font-size: 11px; }
 
 .plan-badge {
