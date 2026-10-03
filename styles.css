@@ -419,6 +419,8 @@ tbody tr > :first-child {
   width: 100%;
 }
 
+.amount.retiree-pays.zero { color: var(--navy); }
+
 /* Keep first column left-aligned */
 #tab-estimator .results-panel table thead th:first-child,
 #tab-estimator .results-panel table tbody th[scope="row"],
